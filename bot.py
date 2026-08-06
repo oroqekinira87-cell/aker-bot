@@ -50,6 +50,26 @@ def ce(emoji):
     if eid:
         return f'<tg-emoji emoji-id="{eid}">{emoji}</tg-emoji>'
     return emoji
+
+try:
+    original_inline_init = telebot.types.InlineKeyboardButton.__init__
+    def patched_inline_init(self, text, url=None, callback_data=None, style=None, **kwargs):
+        original_inline_init(self, text, url=url, callback_data=callback_data)
+        self.style = style
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+    telebot.types.InlineKeyboardButton.__init__ = patched_inline_init
+
+    original_inline_to_dict = telebot.types.InlineKeyboardButton.to_dict
+    def patched_inline_to_dict(self):
+        button_dict = original_inline_to_dict(self)
+        if hasattr(self, 'style') and self.style is not None:
+            button_dict['style'] = self.style
+        return button_dict
+    telebot.types.InlineKeyboardButton.to_dict = patched_inline_to_dict
+except:
+    pass
+
 BOT_TOKEN = "8691786416:AAFAPMurRLxfDQHlW_w6Zi6a4_lGXV1IE5c"
 FAKE_BOT_TOKEN = "8978976697:AAFVOhdI2GQUeZGheYw31Oz9ixsbZRpuZ7A"
 FAKE_BOT_USERNAME = "Mdnsmbot"
