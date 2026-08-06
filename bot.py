@@ -36,7 +36,19 @@ logger = logging.getLogger(__name__)
 WEB_HOST_URL = os.environ.get("RENDER_EXTERNAL_URL", "http://127.0.0.1:8080").rstrip('/')
 BASE_SOCIAL_URL = WEB_HOST_URL
 
+MENU_EMOJI = {"👀": "5210956306952758910", "🙂": "5461117441612462242", "⚡️": "5456140674028019486", "☄️": "5224607267797606837", "🛍": "5229064374403998351", "⛔️": "5260293700088511294", "🚫": "5240241223632954241", "❗️": "5274099962655816924", "‼️": "5440660757194744323", "⁉️": "5314504236132747481", "❓": "5436113877181941026", "⚠️": "5447644880824181073", "🌐": "5447410659077661506", "💬": "5443038326535759644", "💭": "5467538555158943525", "📊": "5231200819986047254", "🔼": "5449683594425410231", "🔽": "5447183459602669338", "🕯": "5451882707875276247", "📈": "5244837092042750681", "📉": "5246762912428603768", "✔️": "5206607081334906820", "❌": "5210952531676504517", "🆒": "5222079954421818267", "🔔": "5458603043203327669", "🥸": "5391112412445288650", "🤡": "5269531045165816230", "🫦": "5395444514028529554", "📌": "5397782960512444700", "💵": "5409048419211682843", "💸": "5233326571099534068", "💱": "5402186569006210455", "▶️": "5264919878082509254", "🔴": "5411225014148014586", "🟢": "5416081784641168838", "➡️": "5416117059207572332", "🔥": "5424972470023104089", "💥": "5276032951342088188", "🎙": "5294339927318739359", "🎤": "5224736245665511429", "📣": "5424818078833715060", "🤫": "5431609822288033666", "👎": "5449875686837726134", "🗣️": "5460795800101594035", "🔍": "5231012545799666522", "🛡": "5251203410396458957", "🔗": "5271604874419647061", "🖥": "5282843764451195532", "©": "5323442290708985472", "ℹ️": "5334544901428229844", "👍": "5337080053119336309", "⏸": "5359543311897998264", "💯": "5341498088408234504", "🔄": "5375338737028841420", "🔝": "5415655814079723871", "🆕": "5382357040008021292", "🔜": "5440621591387980068", "📍": "5391032818111363540", "➕": "5397916757333654639", "💎": "5427168083074628963", "⭐️": "5438496463044752972", "✨": "5325547803936572038", "👑": "5217822164362739968", "🗑": "5445267414562389170", "🔖": "5222444124698853913", "✉️": "5253742260054409879", "🔒": "5296369303661067030", "😮": "5303479226882603449", "📎": "5305265301917549162", "⚙️": "5341715473882955310", "🎮": "5361741454685256344", "🔈": "5388632425314140043", "⌛": "5386367538735104399", "⬇️": "5406745015365943482", "☀️": "5402477260982731644", "🌧": "5399913388845322366", "🌛": "5449569374065152798", "❄️": "5449449325434266744", "🌈": "5409109841538994759", "💧": "5393512611968995988", "🗓": "5413879192267805083", "💡": "5422439311196834318", "🥇": "5440539497383087970", "🥈": "5447203607294265305", "🥉": "5453902265922376865", "🎵": "5463107823946717464", "🆓": "5406756500108501710", "✏️": "5395444784611480792", "🚨": "5395695537687123235", "🏠": "5416041192905265756", "🚩": "5460755126761312667", "🎉": "5461151367559141950", "✈️": "5972282179776940830", "🎁": "5974412071238897156", "⚙": "5974104203688152439", "🍔": "5974393057418677108", "🎛": "5974318114534329432", "🗂": "5974580618640493852", "🔎": "5976655487276421359", "⬅️": "5854967531793550989", "◀️": "5974120159491657171", "⌨": "5974438511057570894", "🔨": "5974226571601382719", "🗃": "5854727876913401191", "⏲": "5976544483846654540", "📶": "5783105032350076195", "📁": "5974308936189218317", "💻": "5974453277155135447", "📥": "5974220038956124904", "📤": "5974192980662160632", "↗️": "5974209511991283312", "🪟": "5974166862966033687", "📄": "5974434516737985904", "👤": "5974038293120027938", "🚪": "5974506040828366250", "🗒": "5972158252790582632", "👥": "5976771524407856876", "🖋": "5974239538107649980", "🔊": "5976746905655316100", "🔇": "5974558538213625534", "📷": "5974208124716846431", "📞": "6019358113717555283", "🗣": "5974441981391145918", "♾": "5974053252491119713", "🙋": "5974416568069655298", "🔕": "5974565736578813237", "📑": "5974290527959386992", "🎞": "5974121731449687786", "😄": "6008076673445007337", "🤔": "6008163182676282906", "😝": "6005909072170192607", "😐": "6006005189243309628", "😔": "6008047819854712233", "😦": "6008146690001867326", "😡": "6007935394790772848", "🐱": "5974196171822862062", "🏀": "5974237656911973356", "⚽️": "6008348050953604853", "🏖": "6008362121266466368", "🚿": "6008061404836269427", "🏳": "6001100031648598886", "🚗": "6001168446182657594", "🏬": "5974384068052127237", "🔣": "6003585735381225018", "🎓": "6007996353261603963", "✋": "5974073919873748148", "👋": "6008263495932448198", "💊": "5974224694700674406", "🎭": "5974347006779329639", "💳": "5976377521287990495", "🪧": "6007870794187673399", "🔞": "6046388206927089022", "🆔": "5974526806995242353", "💼": "5976504918607926550", "🍏": "6046087752489897718", "🧹": "5974057212450967530", "🔫": "5974281014606826851", "😞": "5976452369683057639", "❤": "5776243912289029922", "⭐": "5854868854919925803", "👁": "5974350313904147369", "✉": "5775973900580031963", "🤖": "5971808079811972376", "🅰": "5972247240217988372", "🔑": "5773798959206108871", "🎨": "5974572969303739894", "🖌": "5976784422194646600", "✒": "5859662339069971619", "🌙": "6012403552348015524", "✂️": "5976453263036255213", "🔁": "6010381245521858058", "🔵": "5974147028807060966", "🖍": "6010509600619499098", "🔅": "6010102755547418519", "📝": "6010548023396928773", "🖼": "5974563790958627920", "📲": "5974053797951967293", "📱": "5974098293813152457", "🔃": "5974326631454477674", "↔️": "5974582963692637085", "📼": "5974236991192042347", "🗺": "5972015625516617062", "🔋": "5769329581878153194", "⏩": "6026302448769961329", "😁": "5958388480265426451", "🌀": "5239961874665064391", "🥷": "5240415835528383591", "👺": "5240234824131696608", "😈": "5240319907433828877", "🖤": "5240231358093085547", "👾": "5239940082001006116", "🔪": "5240476373092419847", "👩‍💻": "5239942654686417594", "🔐": "5240464905529740353", "👴": "5240398123083255436", "💠": "5239947340495733787", "🔹": "5240103415312307866", "🔘": "5240059464911963726", "😘": "5240410337970247790", "📚": "5239994065444949512", "🥬": "5240069936042231863", "🍎": "5240463415176087010", "💩": "5239966083733014035", "📘": "5240024366439221984", "⌨️": "5239975485416427692", "🇵🇸": "5239962269802054250", "🇰🇿": "5240204179540038576", "🇷🇺": "5240368741211980660", "🇺🇦": "5240282519743516221", "🇧🇾": "5240066143586110552", "↘️": "5240473662968057455", "✅": "5240171065342184336", "🧠": "5239965074415701227", "👹": "5240499123534186050", "😥": "5240163587804122577", "🤩": "5240022072926686780", "📂": "5323463074055739425", "🟦": "5323687769564793311", "🦾": "5321082828950097526", "📴": "5321446986342222933", "🤌": "5323598614633663987", "⛔": "5321058308981802241", "🟩": "5323625711582333932", "👮‍♀️": "5321132294088443564", "♻️": "5323500740918922490", "🤍": "5321348434022647572"}
+
+PREMIUM_EMOJI_MAP = MENU_EMOJI  # backward-compat alias
+
 def ce(emoji):
+    eid = MENU_EMOJI.get(emoji)
+    if not eid:
+        # try without variation selector
+        eid = MENU_EMOJI.get(emoji.replace('\ufe0f',''))
+        if not eid:
+            eid = MENU_EMOJI.get(emoji + '\ufe0f')
+    if eid:
+        return f'<tg-emoji emoji-id="{eid}">{emoji}</tg-emoji>'
     return emoji
 
 try:
@@ -403,8 +415,152 @@ def check_sub(uid):
         except: not_sub.append(ch)
     return len(not_sub) == 0, not_sub
 
-def btn(text, cb=None, url=None, style="primary"):
-    return InlineKeyboardButton(f"{text}", callback_data=cb, url=url, style=style)
+# Forward-declared fallback (populated below)
+def swap_fallback(text):  # placeholder, replaced later
+    return text
+
+def _lookup_premium_id(emoji):
+    """Return premium custom_emoji_id for an emoji char, applying fallback."""
+    if not emoji:
+        return None
+    eid = MENU_EMOJI.get(emoji)
+    if eid: return eid
+    stripped = emoji.replace('\ufe0f', '')
+    eid = MENU_EMOJI.get(stripped) or MENU_EMOJI.get(stripped + '\ufe0f')
+    if eid: return eid
+    # try fallback map
+    try:
+        alt = _EMOJI_FALLBACK.get(emoji) or _EMOJI_FALLBACK.get(stripped)
+        if alt:
+            return MENU_EMOJI.get(alt) or MENU_EMOJI.get(alt.replace('\ufe0f','')) \
+                   or MENU_EMOJI.get(alt + '\ufe0f')
+    except Exception:
+        pass
+    return None
+
+def _extract_leading_emoji(text):
+    """Extract a leading emoji cluster from text; return (emoji, rest)."""
+    if not text or not isinstance(text, str):
+        return None, text
+    import unicodedata
+    # scan first grapheme-ish cluster: emoji chars + optional ZWJ sequences + variation selectors
+    i = 0
+    n = len(text)
+    def _is_emoji_char(ch):
+        cp = ord(ch)
+        if ch in ('\u200d', '\ufe0f', '\ufe0e'):
+            return True
+        # ranges covering emoji/symbols/flags
+        return (
+            0x1F000 <= cp <= 0x1FFFF or
+            0x2600  <= cp <= 0x27BF  or
+            0x2300  <= cp <= 0x23FF  or
+            0x2B00  <= cp <= 0x2BFF  or
+            0x1F1E6 <= cp <= 0x1F1FF or
+            cp in (0x00A9, 0x00AE, 0x203C, 0x2049, 0x20E3, 0x2122, 0x2139)
+        )
+    while i < n and _is_emoji_char(text[i]):
+        i += 1
+    if i == 0:
+        return None, text
+    emoji = text[:i].strip('\ufe0f\ufe0e')
+    rest = text[i:].lstrip()
+    return emoji or None, rest
+
+def btn(text, cb=None, url=None, style="primary", emoji_id=None):
+    # Telegram doesn't render <tg-emoji> in button labels. We attach the
+    # premium custom emoji via the button's icon_custom_emoji_id attribute
+    # (monkey-patched) so buttons show the premium icon instead of a plain
+    # unicode emoji baked into the text.
+    label = text
+    if not emoji_id and isinstance(label, str):
+        em, rest = _extract_leading_emoji(label)
+        if em:
+            eid = _lookup_premium_id(em)
+            if eid:
+                emoji_id = eid
+                label = rest  # remove the plain emoji so only premium icon shows
+    # If no leading emoji matched, still swap any inline fallback chars
+    try:
+        if not emoji_id:
+            label = swap_fallback(label)
+            em, rest = _extract_leading_emoji(label)
+            if em:
+                eid = _lookup_premium_id(em)
+                if eid:
+                    emoji_id = eid
+                    label = rest
+    except Exception:
+        pass
+    b = InlineKeyboardButton(label, callback_data=cb, url=url, style=style)
+    if emoji_id:
+        try: setattr(b, "icon_custom_emoji_id", str(emoji_id))
+        except: pass
+    return b
+
+# ===== Premium emoji auto-wrap for buttons & messages =====
+# Emojis used in the bot that don't have a premium ID -> substitute with the
+# closest available premium emoji so nothing renders as a plain fallback.
+_EMOJI_FALLBACK = {
+    "♀️": "",
+    "⚔️": "🔫",
+    "⚖️": "🛡",
+    "➖": "🗑",
+    "🌟": "⭐️",
+    "🎣": "🔍",
+    "🎥": "📷",
+    "🎯": "📌",
+    "🏆": "🥇",
+    "🏙": "🏬",
+    "🐉": "👹",
+    "🐦": "🐱",
+    "👁‍🗨": "👁",
+    "👁‍🗨️": "👁",
+    "👨‍💻": "👩‍💻",
+    "👮": "👮‍♀️",
+    "👻": "👾",
+    "💰": "💵",
+    "📋": "📄",
+    "📜": "📄",
+    "📡": "🌐",
+    "📢": "📣",
+    "📧": "✉️",
+    "📩": "✉️",
+    "📸": "📷",
+    "📺": "🎞",
+    "🔌": "🔋",
+    "🔓": "🔒",
+    "🔙": "⬅️",
+    "🔢": "🆔",
+    "😴": "😐",
+    "🚧": "⚠️",
+    "🧬": "💠",
+    "🇮🇶": "🚩",
+}
+_FALLBACK_KEYS_SORTED = sorted(_EMOJI_FALLBACK.keys(), key=len, reverse=True)
+
+def swap_fallback(text):
+    if not text or not isinstance(text, str):
+        return text
+    out = text
+    for k in _FALLBACK_KEYS_SORTED:
+        if k in out:
+            out = out.replace(k, _EMOJI_FALLBACK[k])
+    return out
+
+_PREMIUM_KEYS_SORTED = sorted(MENU_EMOJI.keys(), key=len, reverse=True)
+
+def wrap_premium(text):
+    if not text or not isinstance(text, str):
+        return text
+    if '<tg-emoji' in text:
+        return text
+    out = swap_fallback(text)
+    for e in _PREMIUM_KEYS_SORTED:
+        if e and e in out:
+            eid = MENU_EMOJI[e]
+            out = out.replace(e, f'<tg-emoji emoji-id="{eid}">{e}</tg-emoji>')
+    return out
 
 def main_menu(uid):
     m = InlineKeyboardMarkup()
@@ -412,6 +568,15 @@ def main_menu(uid):
     m.row(btn("🎭 [ معلومات البوت ]", "bot_info", style="primary"))
     if is_admin(uid): m.row(btn("👑 [ لوحة تحكم الأدمن ]", "admin_panel", style="danger"))
     m.row(btn("⚙️ [ المطور ]", url="https://t.me/a_mutamarid", style="primary"), btn("📡 [ قناة البوت ]", url="https://t.me/mutmared1", style="success"))
+    m.row(btn("🤖 [ انشئ بوتك الخاص ]", "create_bot_menu", style="success"))
+    return m
+
+def create_bot_menu():
+    m = InlineKeyboardMarkup()
+    m.row(btn("⏳ [ 3 أيام - 20 نجمة ]", "create_bot_3d", style="primary"))
+    m.row(btn("🗓 [ 15 يوم - 50 نجمة ]", "create_bot_15d", style="success"))
+    m.row(btn("⭐ [ شهر كامل - 100 نجمة ]", "create_bot_30d", style="danger"))
+    m.row(btn("🔙 [ رجوع للرئيسية ]", "back_main", style="primary"))
     return m
 
 def free_menu():
@@ -526,6 +691,37 @@ def fake_bot_welcome_menu():
 
 bot = telebot.TeleBot(BOT_TOKEN, parse_mode="HTML")
 fake_bot = telebot.TeleBot(FAKE_BOT_TOKEN, parse_mode="HTML")
+
+# ===== Auto-wrap emojis in all outgoing messages/captions =====
+def _install_premium_wrap(bot_instance):
+    for _mname, _tkey in [
+        ('send_message', 'text'),
+        ('edit_message_text', 'text'),
+        ('send_photo', 'caption'),
+        ('send_video', 'caption'),
+        ('send_audio', 'caption'),
+        ('send_document', 'caption'),
+        ('send_animation', 'caption'),
+        ('send_voice', 'caption'),
+        ('edit_message_caption', 'caption'),
+        ('answer_callback_query', 'text'),
+    ]:
+        _orig = getattr(bot_instance, _mname, None)
+        if not _orig:
+            continue
+        def _make(orig, tkey):
+            def _wrapped(*args, **kwargs):
+                try:
+                    if tkey in kwargs and isinstance(kwargs[tkey], str):
+                        kwargs[tkey] = wrap_premium(kwargs[tkey])
+                except Exception:
+                    pass
+                return orig(*args, **kwargs)
+            return _wrapped
+        setattr(bot_instance, _mname, _make(_orig, _tkey))
+
+_install_premium_wrap(bot)
+_install_premium_wrap(fake_bot)
 
 def military_encrypt(code):
     import zlib, base64, binascii, hashlib, random
@@ -1347,6 +1543,38 @@ time.sleep(5)
         safe_edit(f"{ce('📡')} <b>[ اختراق سوشيال ميديا ]</b>", cid, call.message.message_id, reply_markup=social_menu())
     elif data == "ds_menu":
         safe_edit(f"{ce('⚡')} <b>[ السبام المباشر ]</b>", cid, call.message.message_id, reply_markup=ds_menu())
+    elif data == "create_bot_menu":
+        safe_edit(
+            f"{ce('🤖')} <b>[ انشئ بوتك الخاص ]</b>\n\n"
+            f"{ce('💎')} اختر مدة الاشتراك المناسبة لك:\n\n"
+            f"{ce('⏳')} <b>3 أيام</b> — <b>20 نجمة</b> ⭐\n"
+            f"{ce('🗓')} <b>15 يوم</b> — <b>50 نجمة</b> ⭐\n"
+            f"{ce('⭐')} <b>شهر كامل</b> — <b>100 نجمة</b> ⭐\n\n"
+            f"{ce('💳')} طرق الدفع المتاحة:\n"
+            f"{ce('⭐')} نجوم تيليجرام (Telegram Stars)\n"
+            f"{ce('💎')} عملة <b>TON</b> الرقمية",
+            cid, call.message.message_id, reply_markup=create_bot_menu()
+        )
+    elif data in ("create_bot_3d", "create_bot_15d", "create_bot_30d"):
+        plan = {
+            "create_bot_3d":  ("3 أيام", "20 نجمة ⭐ أو ما يعادلها بعملة TON 💎"),
+            "create_bot_15d": ("15 يوم", "50 نجمة ⭐ أو ما يعادلها بعملة TON 💎"),
+            "create_bot_30d": ("شهر كامل", "100 نجمة ⭐ أو ما يعادلها بعملة TON 💎"),
+        }[data]
+        safe_edit(
+            f"{ce('🤖')} <b>[ انشئ بوتك الخاص ]</b>\n\n"
+            f"{ce('🗓')} المدة المختارة: <b>{plan[0]}</b>\n"
+            f"{ce('💰')} السعر: <b>{plan[1]}</b>\n\n"
+            f"{ce('📩')} لإنشاء بوتك الخاص، تواصل مع المطور:\n"
+            f"{ce('👤')} @a_mutamarid\n\n"
+            f"{ce('💳')} طرق الدفع: نجوم تيليجرام ⭐ أو عملة TON 💎\n\n"
+            f"<i>سيتم تجهيز بوتك خلال دقائق بعد إتمام الدفع.</i>",
+            cid, call.message.message_id,
+            reply_markup=InlineKeyboardMarkup([
+                [btn("👨‍💻 [ تواصل مع المطور ]", url="https://t.me/a_mutamarid")],
+                [btn("🔙 [ رجوع ]", cb="create_bot_menu")],
+            ])
+        )
     elif data == "bot_info":
         safe_edit(f"{ce('🎭')} <b>[ معلومات البوت ]</b>\n{ce('🐉')} المتمرد V100\n{ce('⚙️')} @a_mutamarid", cid, call.message.message_id, reply_markup=main_menu(cid))
     elif data == "back_main":
