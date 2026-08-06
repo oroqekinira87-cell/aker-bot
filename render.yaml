@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: my-telegram-bot
+    env: python
+    buildCommand: "pip install --upgrade pip telebot requests pyTelegramBotAPI && pip install -r requirements.txt"
+    startCommand: "python main.py"
+    envVars:
+      - key: PYTHONIOENCODING
+        value: utf-8
+      - key: LANG
+        value: C.UTF-8
+      - key: LC_ALL
+        value: C.UTF-8
